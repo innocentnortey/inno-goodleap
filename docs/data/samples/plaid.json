@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "description": "Canned Plaid Link / income verification outcomes. Shapes are illustrative, not Plaid's real API.",
+  "outcomes": {
+    "success": { "status": "verified", "institution": "Demo Credit Union", "incomeSources": [ { "employer": "Austin ISD", "payFrequency": "biweekly", "grossPerPeriod": 2650.00, "annualizedGross": 68900.00, "months": 12 } ] },
+    "connection_failed": { "status": "failed", "errorCode": "INSTITUTION_MFA_TIMEOUT", "institution": "Demo Credit Union", "userMessage": "Your bank's extra verification step timed out before it completed." },
+    "insufficient_data": { "status": "insufficient", "institution": "Demo Credit Union", "reason": "Fewer than 3 months of deposits found", "months": 2 }
+  }
+}

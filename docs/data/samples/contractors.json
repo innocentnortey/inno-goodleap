@@ -1,0 +1,8 @@
+{
+  "synthetic": true,
+  "description": "Invented contractor profiles for the demo.",
+  "contractors": [
+    { "id": "C-1001", "businessName": "ABC Roofing LLC", "trade": "roofing", "city": "Austin", "state": "TX", "licenseNo": "TX-0048812", "partnerSince": "2021-03-15", "contact": { "name": "Demo Contractor", "phone": "(512) 555-0100" } },
+    { "id": "C-1002", "businessName": "Lone Star HVAC", "trade": "hvac", "city": "Round Rock", "state": "TX", "licenseNo": "TACLA-DEMO-2", "partnerSince": "2023-08-01", "contact": { "name": "Demo Tech", "phone": "(512) 555-0199" } }
+  ]
+}

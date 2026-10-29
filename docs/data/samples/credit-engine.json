@@ -1,0 +1,8 @@
+{
+  "synthetic": true,
+  "description": "Canned credit decision engine responses. The demo never returns 'approved' so no screen can read as an approval.",
+  "outcomes": {
+    "pending": { "decision": "pending", "referenceId": "CD-DEMO-0001", "message": "Application received. A decision will be returned by the lending workflow.", "nextSteps": [] },
+    "conditional": { "decision": "conditional", "referenceId": "CD-DEMO-0002", "message": "Application received with conditions.", "nextSteps": [ "Upload proof of homeownership", "Confirm income documentation" ] }
+  }
+}

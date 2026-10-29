@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoodLeap — combined Stage 1–4 review</title>
+<!--
+  Zero-to-hero visual review page, built from templates/visual-review-page.html.
+  One combined page for Stages 1–4 (skip S-1). The Markdown sources listed in the metadata own every fact;
+  this page is a synthesis built after them. Rebuild and re-stamp if any source changes:
+    python3 -I ../.claude/skills/zero-to-hero/scripts/stamp_review_page.py docs/artifacts/2026-10-29-goodleap-review.html --root .
+    python3 -I ../.claude/skills/zero-to-hero/scripts/check_review_page.py docs/artifacts/2026-10-29-goodleap-review.html --root .
+-->
+<meta name="review-stage" content="Zero-to-hero Stages 1–4 combined · Frame, Data reality, Hard problems, Interview (skip S-1)">
+<meta name="review-status" content="DRAFT — Combined Stage 1–4 review · build in progress; not approved; awaiting Innocent's morning review">
+<meta name="review-date" content="2026-10-29">
+<meta name="review-source" content="docs/source/01-goodleap-brief.md|afdd10b887d98b21b2652008b292da44e62c97132d592ccec5af793c6c8fbdf0">
+<meta name="review-source" content="docs/analysis/2026-10-28-brief-audit.md|8d63e3a01845a183b56213ac3fbdde058b21900641c1baebb44aceddfc4af375">
+<meta name="review-source" content="docs/delivery/2026-10-29-angle-and-demo-framing.md|ee2a3b10de0afabc0f5b42e819faedcca0d5bb74aac5b275f697e6753d194873">
+<meta name="review-source" content="docs/prd/goodleap-prd.md|dccc842b79bfd5611ce40c0d123a59492e5887ac46b5340c2f9424d6bbc571dd">
+<meta name="review-source" content="docs/data/README.md|951221eb8ea20dfff55400e6a442f9e4a6c9692ed8763b705674664246d8bcef">
+<meta name="review-source" content="docs/data/worked-pairs.md|940e83c46848820ce4f6e8486bccb435af23bca83f24155d9c8a4b2344364d8b">
+<meta name="review-source" content="docs/design/hard-problems.md|4ca043d34cdb1829d5a9f036b07abd7c4b5cb9ae337800dabda8af231d7e8efc">
+<meta name="review-source" content="docs/ux/01-planning/USER_STORIES.md|f4794086bd47624692f9088b7a61d2231aa3613d91ff297f9e60899373034ddf">
+<meta name="review-source" content="docs/ux/01-planning/USER_FLOWS.md|682884e61767fd86d309e15ae0877edb27622eadcfb15f4afa6eb0369f3a628c">
+<meta name="review-source" content="docs/ux/03-structure/SCREEN_SPECS.md|683a267a799f7ec27267525753d0f9a02ea1f904a8c583cdfd9fdeaf5f383f2b">
+<meta name="review-source" content="docs/design/architecture.md|9f120902daad531332d1592106c0b31588a68f651716c2c6106e47d72e17e310">
+<meta name="review-source" content="docs/analysis/2026-10-28-overnight-demo-plan.md|53b80f59e38b9de06c1c36cc53405da6bfb20d6b1056580a6c00c666893ab433">
+<meta name="review-source" content="docs/plans/slice-plan.md|92c52b3cc4711da1a4fab38a3c98d137ef0d2f96e6251249241cf7bbae269a1a">
+<style>
+:root{
+  color-scheme:light dark;
+  --bg:#f6f4ee;--surface:#fffdf8;--surface-2:#f0ece2;--ink:#1c1b19;--muted:#5b584f;--line:#d9d2c3;
+  --accent:#1f5f5b;--focus:#b8541e;
+  --fact:#1f6a5f;--fact-bg:#e3f1ee;
+  --decision:#2b4f8f;--decision-bg:#e6ecf8;
+  --proposal:#7a4f00;--proposal-bg:#fbf0d9;
+  --unknown:#55524a;--unknown-bg:#ecebe6;
+  --awaiting:#a3361c;--awaiting-bg:#fbe7e1;
+  --ai:#5b3fa6;--ai-bg:#ece6f8;
+  --lane-family:#f3efe6;--lane-assistant:#e9f2f0;--lane-staff:#ecebf5;--lane-build:#f6efe4;
+  --space-1:4px;--space-2:8px;--space-3:16px;--space-4:24px;--space-5:40px;--radius:10px;
+  --font-ui:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --font-body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#161513;--surface:#1f1e1b;--surface-2:#2a2824;--ink:#ece8df;--muted:#b5afa1;--line:#3b3832;
+  --accent:#7cc4bd;--focus:#f0a070;
+  --fact:#7fd0c3;--fact-bg:#17302c;--decision:#a9c1f2;--decision-bg:#1d2740;
+  --proposal:#f1c879;--proposal-bg:#3a2d12;--unknown:#c9c5ba;--unknown-bg:#2c2b27;
+  --awaiting:#f6a58f;--awaiting-bg:#3d1f17;--ai:#c7b6f5;--ai-bg:#2a2340;
+  --lane-family:#24221e;--lane-assistant:#1b2a28;--lane-staff:#22212d;--lane-build:#2a251c}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#161513;--surface:#1f1e1b;--surface-2:#2a2824;--ink:#ece8df;--muted:#b5afa1;--line:#3b3832;
+  --accent:#7cc4bd;--focus:#f0a070;
+  --fact:#7fd0c3;--fact-bg:#17302c;--decision:#a9c1f2;--decision-bg:#1d2740;
+  --proposal:#f1c879;--proposal-bg:#3a2d12;--unknown:#c9c5ba;--unknown-bg:#2c2b27;
+  --awaiting:#f6a58f;--awaiting-bg:#3d1f17;--ai:#c7b6f5;--ai-bg:#2a2340;
+  --lane-family:#24221e;--lane-assistant:#1b2a28;--lane-staff:#22212d;--lane-build:#2a251c}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--font-ui);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface);padding:8px 16px;z-index:9}
+.skip:focus{left:16px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--space-3)}
+header.top{background:var(--surface);border-bottom:1px solid var(--line);padding:var(--space-4) 0}
+.topline{display:flex;justify-content:space-between;gap:var(--space-3);align-items:flex-start;flex-wrap:wrap}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.15;margin:var(--space-2) 0 var(--space-3);text-wrap:balance}
+h2{font-size:clamp(21px,2.6vw,26px);line-height:1.25;margin:0 0 var(--space-2);text-wrap:balance}
+h3{font-size:17px;margin:0 0 var(--space-2)}
+h4{font-size:15px;margin:var(--space-3) 0 var(--space-2)}
+p{margin:0 0 var(--space-3);text-wrap:pretty}
+.lede{font:18px/1.55 var(--font-body);max-width:72ch}
+.status-banner{display:flex;gap:var(--space-3);align-items:flex-start;background:var(--awaiting-bg);
+  border:1px solid var(--awaiting);border-radius:var(--radius);padding:var(--space-3);margin-bottom:var(--space-3)}
+.status-banner strong{color:var(--awaiting)}
+.meta{display:grid;grid-template-columns:max-content 1fr;gap:4px var(--space-3);font-size:14px;color:var(--muted);margin:0}
+.meta dt{font-weight:600;color:var(--ink);grid-column:1}.meta dd{grid-column:2;margin:0;overflow-wrap:anywhere}
+.meta ul{margin:0;padding-left:18px}.meta li{margin:2px 0}
+code{font:0.88em var(--font-mono);background:var(--surface-2);padding:1px 5px;border-radius:5px}
+section{padding:var(--space-5) 0 var(--space-3);border-bottom:1px solid var(--line)}
+.section-sub{color:var(--muted);max-width:75ch}
+.toggle{font:13px var(--font-ui);font-weight:600;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);
+  border-radius:999px;padding:6px 12px;cursor:pointer;min-height:36px}
+.toggle:hover{border-color:var(--accent)}
+/* status badges */
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.02em;
+  padding:2px 9px;border-radius:999px;border:1.5px solid currentColor;white-space:nowrap;vertical-align:middle}
+.st::before{font-size:11px}
+.st.fact{color:var(--fact);background:var(--fact-bg)} .st.fact::before{content:"●"}
+.st.decision{color:var(--decision);background:var(--decision-bg)} .st.decision::before{content:"◆"}
+.st.proposal{color:var(--proposal);background:var(--proposal-bg)} .st.proposal::before{content:"▲"}
+.st.unknown{color:var(--unknown);background:var(--unknown-bg);border-style:dashed} .st.unknown::before{content:"?"}
+.st.awaiting{color:var(--awaiting);background:var(--awaiting-bg);border-width:2px} .st.awaiting::before{content:"⧗"}
+.st.ai{color:var(--ai);background:var(--ai-bg)} .st.ai::before{content:"✦"}
+.st.noai{color:var(--muted);background:var(--surface-2)} .st.noai::before{content:"▢"}
+.legend{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-3);list-style:none;padding:var(--space-3);margin:var(--space-3) 0 0;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);font-size:14px}
+.legend li{display:flex;gap:8px;align-items:center}
+/* cards */
+.grid{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.grid.three{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:var(--radius);padding:var(--space-3)}
+.card[data-status="fact"]{border-left-color:var(--fact)}
+.card[data-status="decision"]{border-left-color:var(--decision)}
+.card[data-status="proposal"]{border-left-color:var(--proposal)}
+.card[data-status="unknown"]{border-left-color:var(--unknown);border-left-style:dashed}
+.card[data-status="awaiting"]{border-left-color:var(--awaiting);border-color:var(--awaiting)}
+.card h3{display:flex;justify-content:space-between;gap:var(--space-2);align-items:flex-start;flex-wrap:wrap}
+.card p:last-child,.card ul:last-child,.card ol:last-child{margin-bottom:0}
+.card .src{font-size:13px;color:var(--muted)}
+.big{font-size:20px;font-weight:700;line-height:1.25;margin:var(--space-1) 0 var(--space-2)}
+.num{font-variant-numeric:tabular-nums}
+ul.tight{margin:0;padding-left:20px} ul.tight li{margin:3px 0}
+ol.tight{margin:0;padding-left:22px} ol.tight li{margin:3px 0}
+blockquote{margin:0 0 var(--space-3);padding:var(--space-2) var(--space-3);border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 8px 8px 0;font:italic 16px/1.5 var(--font-body)}
+blockquote cite{display:block;font:13px var(--font-ui);color:var(--muted);margin-top:4px}
+.term{border-bottom:1px dotted var(--muted);text-decoration:none;cursor:help}
+/* diagrams */
+figure{margin:var(--space-3) 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3)}
+figcaption{font-size:14px;color:var(--muted);margin-top:var(--space-2)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll svg{min-width:760px}
+.scroll:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.scroll-hint{display:none;font-size:13px;color:var(--muted);margin:0 0 var(--space-2)}
+svg{display:block;width:100%;height:auto;font-family:var(--font-ui)}
+.narrow svg{max-width:680px;margin:0 auto}
+.mini svg{max-width:640px;margin:0 auto}
+svg .lane-family{fill:var(--lane-family)} svg .lane-assistant{fill:var(--lane-assistant)} svg .lane-staff{fill:var(--lane-staff)} svg .lane-build{fill:var(--lane-build)}
+svg .lane-label{fill:var(--muted);font-size:13px;font-weight:700}
+svg .node{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+svg .node.fact{stroke:var(--fact)} svg .node.decision{stroke:var(--decision);stroke-width:2}
+svg .node.proposal{stroke:var(--proposal);stroke-dasharray:6 3} svg .node.unknown{stroke:var(--unknown);stroke-dasharray:3 3}
+svg .node.awaiting{stroke:var(--awaiting);stroke-width:2.5}
+svg .node.ai{stroke:var(--ai);stroke-width:2;fill:var(--ai-bg)}
+svg .node.rejected{stroke:var(--unknown);stroke-dasharray:3 3;fill:var(--unknown-bg)}
+svg text{fill:var(--ink);font-size:13px} svg .small{font-size:11.5px;fill:var(--muted)} svg .strong{font-weight:700}
+svg .tiny{font-size:10.5px;fill:var(--muted)}
+svg .arrow{stroke:var(--muted);stroke-width:1.6;fill:none} svg .arrow.dash{stroke-dasharray:5 4}
+svg .head{fill:var(--muted)} svg .band{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:2 4}
+svg .band-label{fill:var(--accent);font-weight:700;font-size:12.5px}
+svg .cut{stroke:var(--awaiting);stroke-width:2;stroke-dasharray:6 4}
+svg .cut-label{fill:var(--awaiting);font-weight:700;font-size:12px}
+svg .pill{fill:var(--ai-bg);stroke:var(--ai);stroke-width:1}
+svg .pill-text{fill:var(--ai);font-size:10.5px;font-weight:700}
+svg .pill.off{fill:var(--surface-2);stroke:var(--line)} svg .pill-text.off{fill:var(--muted)}
+svg .accent{fill:var(--accent)}
+svg .money{fill:var(--fact-bg);stroke:var(--fact)}
+.words{font-size:14px;color:var(--muted);margin:var(--space-2) 0 0;padding-left:20px}
+/* why chain, tables */
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{background:var(--surface-2)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+tr[data-status="decision"] td:first-child{border-left:4px solid var(--decision)}
+tr[data-status="fact"] td:first-child{border-left:4px solid var(--fact)}
+tr[data-status="proposal"] td:first-child{border-left:4px solid var(--proposal)}
+tr[data-status="unknown"] td:first-child{border-left:4px dashed var(--unknown)}
+tr[data-status="awaiting"] td:first-child{border-left:4px solid var(--awaiting)}
+.mark{display:inline-block;font-size:12px;font-weight:700;padding:1px 7px;border-radius:6px;border:1px solid currentColor}
+.mark.q{color:var(--proposal)} .mark.n{color:var(--fact)} .mark.p{color:var(--unknown)}
+/* worked pairs */
+.wp{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--fact);border-radius:var(--radius);padding:var(--space-3)}
+.wp .io{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--space-2);align-items:stretch;margin:var(--space-2) 0}
+.wp .box{background:var(--surface-2);border-radius:8px;padding:var(--space-2) var(--space-3);font-size:14px}
+.wp .box h4{margin:0 0 4px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.wp .arr{align-self:center;font-size:22px;color:var(--muted)}
+.wp .box ul{margin:0;padding-left:18px}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:0 7px;border-radius:6px;margin-left:4px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted)}
+.pill.hard{color:var(--awaiting);border-color:var(--awaiting)} .pill.easy{color:var(--fact);border-color:var(--fact)}
+.pill.unc{color:var(--proposal);border-color:var(--proposal)} .pill.sure{color:var(--decision);border-color:var(--decision)}
+.flag{font-size:13px;color:var(--awaiting);font-weight:600}
+/* story parts */
+.part{border-left:3px solid var(--line);padding:2px 0 2px var(--space-3);margin:var(--space-3) 0}
+.part h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 4px}
+.part p{max-width:78ch}
+.part[data-part="context"]{border-left-color:var(--accent)}
+.part[data-part="problem"]{border-left-color:var(--decision)}
+.part[data-part="why-hard"]{border-left-color:var(--awaiting)}
+.part[data-part="why-asked"]{border-left-color:var(--proposal)}
+.hp{padding:var(--space-4)}
+.hp h2{margin-bottom:var(--space-2)}
+.options{display:grid;gap:var(--space-2);grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));margin:var(--space-2) 0 var(--space-3)}
+.opt{border:1px solid var(--line);border-radius:8px;padding:var(--space-2) var(--space-3);font-size:14px;background:var(--surface-2)}
+.opt.rec{border:2px solid var(--proposal);background:var(--proposal-bg)}
+.opt.chosen{border:2px solid var(--decision);background:var(--decision-bg)}
+.opt h4{margin:0 0 4px;font-size:14px}
+.switch{font-size:14px;background:var(--surface-2);border-radius:8px;padding:var(--space-2) var(--space-3);margin:0}
+.switch strong{color:var(--proposal)}
+/* compliance checklist */
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-2);grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:var(--space-2);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:var(--space-2) var(--space-3);font-size:14px}
+.checks .box{width:22px;height:22px;border:2px solid var(--fact);border-radius:5px;display:grid;place-items:center;color:var(--fact);font-weight:700;font-size:13px}
+/* ask panel */
+.ask{background:var(--awaiting-bg);border:2px solid var(--awaiting);border-radius:var(--radius);padding:var(--space-4)}
+.ask h2{color:var(--awaiting)}
+.ask table{background:var(--surface)}
+.ask-card{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--awaiting);border-radius:var(--radius);padding:var(--space-3);margin:var(--space-3) 0}
+.ask-card .part{margin:var(--space-2) 0}
+.ask-card .part p{margin-bottom:0;font-size:14px}
+.days{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3);font-size:14px}
+.day h3{margin-bottom:var(--space-2)}
+.day ul{margin:0;padding-left:18px}
+footer{padding:var(--space-4) 0 var(--space-5);font-size:13px;color:var(--muted)}
+@media (max-width:640px){
+  .status-banner{flex-direction:column;gap:var(--space-2)}
+  .meta{grid-template-columns:1fr}
+  .meta dt,.meta dd{grid-column:1}
+  .meta dt:not(:first-child){margin-top:var(--space-2)}
+  figure{padding:var(--space-2)}
+  .scroll-hint{display:block}
+  .wp .io{grid-template-columns:1fr}
+  .wp .arr{transform:rotate(90deg);justify-self:center}
+  .hp,.ask{padding:var(--space-3)}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media print{
+  html,body{background:#fff;color:#000}
+  .skip,.toggle{display:none}
+  section{break-inside:auto;padding:16px 0}
+  figure,.card,.wp,.opt,.ask-card,.day{break-inside:avoid}
+  h2,h3,.section-sub{break-after:avoid}
+  .scroll{overflow:visible} .scroll svg{min-width:0} .scroll-hint{display:none}
+  a{color:#000}
+  a[href^="../"]::after{content:" (" attr(href) ")";font-size:10px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="topline">
+      <p class="kicker">Zero-to-hero Stages 1–4 · combined review (skip S-1) · local visual review · Markdown is the source of truth</p>
+      <button class="toggle" type="button" id="themeToggle" aria-pressed="false">Theme: system</button>
+    </div>
+    <h1>GoodLeap take-home — what Stages 1–4 established, what is being built tonight, and what waits for you</h1>
+    <div class="status-banner" role="status">
+      <span class="st awaiting">Awaiting your review</span>
+      <div><strong>Combined Stage 1–4 review · build in progress.</strong> Nothing on this page is approved because it exists. You said "build through; review the combined page in the morning", so the build runs from these documents overnight. Read this page, then react to the <a href="#ask-h">Awaiting you</a> panel at the end. Anything you change is reworked.</div>
+    </div>
+    <dl class="meta">
+      <dt>Review date</dt><dd>2026-10-29 (built after the Markdown sources; deadline 08:00 CT the same morning)</dd>
+      <dt>Sources (full documents)</dt>
+      <dd>
+        <ul>
+          <li><a href="../source/01-goodleap-brief.md"><code>docs/source/01-goodleap-brief.md</code></a> — the partner's brief (ISSUED, confidential; quoted in short phrases only) · SHA-256 <code data-sha-for="docs/source/01-goodleap-brief.md">afdd10b887d9</code></li>
+          <li><a href="../analysis/2026-10-28-brief-audit.md"><code>docs/analysis/2026-10-28-brief-audit.md</code></a> — Stage 1: the problem behind the brief, assumptions, why-chain, metrics · <code data-sha-for="docs/analysis/2026-10-28-brief-audit.md">8d63e3a01845</code></li>
+          <li><a href="../delivery/2026-10-29-angle-and-demo-framing.md"><code>docs/delivery/2026-10-29-angle-and-demo-framing.md</code></a> — two layers of success, metrics tree, demo order · <code data-sha-for="docs/delivery/2026-10-29-angle-and-demo-framing.md">ee2a3b10de0a</code></li>
+          <li><a href="../prd/goodleap-prd.md"><code>docs/prd/goodleap-prd.md</code></a> — the PRD: scope, journey, R-1…R-16, C-1…C-6, D-1…D-14, assumptions, acceptance · <code data-sha-for="docs/prd/goodleap-prd.md">dccc842b79bf</code></li>
+          <li><a href="../data/README.md"><code>docs/data/README.md</code></a> and <a href="../data/worked-pairs.md"><code>docs/data/worked-pairs.md</code></a> — Stage 2: selection matrix, WP-1…WP-4 · <code data-sha-for="docs/data/README.md">951221eb8ea2</code> · <code data-sha-for="docs/data/worked-pairs.md">940e83c46848</code></li>
+          <li><a href="../design/hard-problems.md"><code>docs/design/hard-problems.md</code></a> — Stage 3: HP-1…HP-4 · <code data-sha-for="docs/design/hard-problems.md">4ca043d34cdb</code></li>
+          <li><a href="../ux/01-planning/USER_STORIES.md"><code>docs/ux/01-planning/USER_STORIES.md</code></a>, <a href="../ux/01-planning/USER_FLOWS.md"><code>USER_FLOWS.md</code></a>, <a href="../ux/03-structure/SCREEN_SPECS.md"><code>docs/ux/03-structure/SCREEN_SPECS.md</code></a> — stories, flows, states, screens · <code data-sha-for="docs/ux/01-planning/USER_STORIES.md">f4794086bd47</code> · <code data-sha-for="docs/ux/01-planning/USER_FLOWS.md">682884e61767</code> · <code data-sha-for="docs/ux/03-structure/SCREEN_SPECS.md">683a267a799f</code></li>
+          <li><a href="../design/architecture.md"><code>docs/design/architecture.md</code></a> — system map, one request traced, modules, SDQ-1…SDQ-5 · <code data-sha-for="docs/design/architecture.md">9f120902daad</code></li>
+          <li><a href="../analysis/2026-10-28-overnight-demo-plan.md"><code>docs/analysis/2026-10-28-overnight-demo-plan.md</code></a> and <a href="../plans/slice-plan.md"><code>docs/plans/slice-plan.md</code></a> — what gets built tonight, by whom · <code data-sha-for="docs/analysis/2026-10-28-overnight-demo-plan.md">53b80f59e38b</code> · <code data-sha-for="docs/plans/slice-plan.md">92c52b3cc471</code></li>
+        </ul>
+      </dd>
+      <dt>Refresh</dt><dd>If any source changes, this page is rebuilt, re-stamped and re-checked before you are asked to sign off.</dd>
+    </dl>
+    <ul class="legend" data-legend aria-label="Status legend">
+      <li><span class="st fact" data-legend-item="fact">Fact</span> established; a source is cited</li>
+      <li><span class="st decision" data-legend-item="decision">Your decision</span> decided by you, with date or ID</li>
+      <li><span class="st proposal" data-legend-item="proposal">Proposal</span> Claude proposes; not decided</li>
+      <li><span class="st unknown" data-legend-item="unknown">Unknown</span> not established; question ID given</li>
+      <li><span class="st awaiting" data-legend-item="awaiting">Awaiting approval</span> asked of you at this gate</li>
+      <li><span class="st ai">AI</span> a model is called here · <span class="st noai">No AI</span> code or a person</li>
+    </ul>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+<!-- ===================================================== AT A GLANCE -->
+<section aria-labelledby="sum-h" data-visual="summary">
+  <h2 id="sum-h">At a glance</h2>
+  <div class="grid three">
+    <article class="card" data-status="fact">
+      <h3>The problem <span class="st fact">Fact</span></h3>
+      <p class="big">A lender loses loans at two moments of confusion: picking a product and verifying income.</p>
+      <p class="src">Brief: 38% of applications are abandoned, "biggest drop-offs" at those two steps; 22 minutes against a sub-10 benchmark. Audit: the cause we can change is that "the homeowner hits something they don't understand and nothing helps them through it."</p>
+    </article>
+    <article class="card" data-status="decision">
+      <h3>Your turn on it <span class="st decision">Your decision</span></h3>
+      <p class="big">Not "just another chatbot": buttons for decisions, AI for ambiguity and messy documents, code for every number.</p>
+      <p class="src">D-11, your critique of 2026-10-28, plus the ChatGPT conversation you chose as the direction (D-1). Fourteen decisions D-1…D-14 are quoted in <a href="#s4-decisions">the decision table</a>.</p>
+    </article>
+    <article class="card" data-status="awaiting">
+      <h3>What waits for you <span class="st awaiting">Awaiting approval</span></h3>
+      <p class="big">Three hard-problem recommendations, three UX defaults, one assumption (D-12), five design-doc questions (SDQ-1…5).</p>
+      <p class="src">Each one says why you are asked and what your answer changes. The build does not wait for them; the design doc's production sections do. See <a href="#ask-h">Awaiting you</a>.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================================================== STORY -->
+<section aria-labelledby="story-h" data-visual="story">
+  <h2 id="story-h">The story so far</h2>
+  <p class="lede">A home-improvement lender gave you a <span class="term" title="a short solo project a company sets to see how you think and build">take-home</span>. The ask: design and prototype "an AI-powered solution" for a loan process its contractors find slow and confusing. The lender funds roofs, solar and HVAC through about 15,000 contractor partners. A contractor stands in a homeowner's kitchen, trying to close a $30,000 roof. The homeowner wants to know what it costs a month, and whether the promo is a trap. Today the answer takes too long. 38% of started applications are abandoned. Staff still read pay stubs and estimates by hand. The brief's hard line: "No AI system can make or imply a credit decision."</p>
+  <p class="lede">You did not take the brief at face value. Working it through with ChatGPT, you saw a sales-conversion problem dressed up as a loan-application problem. You rejected the obvious answer: <em>"just another chatbot"</em>. The quote is arithmetic, so buttons win there. AI belongs only where a person is confused or a document is messy. Code owns every number, every disclosure and every decision. That became D-11 and the shape of the product.</p>
+  <p class="lede">At 00:13 on 2026-10-29 you chose to finish it overnight. Stack A: React 19, Vite, Tailwind 4 and a TypeScript/Node backend, the brief's own stack. Claude Sonnet 5.5 for every model call. Deadline 08:00 CT. Skips S-1…S-4 and S-6. And: "build through; review the combined page in the morning." Stages 1–4 ran in light mode from your ChatGPT conversation and the brief. This page is the one review for all four. The build runs from the same documents while you sleep.</p>
+  <figure class="narrow">
+    <svg viewBox="0 0 680 190" role="img" aria-labelledby="t0t t0d">
+      <title id="t0t">Timeline: brief received, your turn on it, the overnight decision, this morning's review</title>
+      <desc id="t0d">Four steps left to right. 2026-10-28: the brief arrives. 2026-10-28: you and ChatGPT reframe it as buttons for decisions and AI for ambiguity. 2026-10-29 00:13: you choose to build overnight with stack A and Sonnet 5.5. 2026-10-29 by 08:00 CT: you read this page and react.</desc>
+      <defs><marker id="ah0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <path class="arrow" d="M30,60 L650,60" marker-end="url(#ah0)"/>
+      <circle class="node fact" cx="60" cy="60" r="9"/><text x="60" y="95" text-anchor="middle" class="strong">Brief arrives</text><text x="60" y="112" text-anchor="middle" class="small">2026-10-28</text><text x="60" y="128" text-anchor="middle" class="small">"AI-powered solution"</text>
+      <circle class="node decision" cx="240" cy="60" r="9"/><text x="240" y="95" text-anchor="middle" class="strong">Your turn</text><text x="240" y="112" text-anchor="middle" class="small">2026-10-28 · D-1, D-11</text><text x="240" y="128" text-anchor="middle" class="small">buttons for decisions,</text><text x="240" y="143" text-anchor="middle" class="small">AI for ambiguity</text>
+      <circle class="node decision" cx="430" cy="60" r="9"/><text x="430" y="95" text-anchor="middle" class="strong">Build overnight</text><text x="430" y="112" text-anchor="middle" class="small">2026-10-29 00:13 · D-4, D-8, D-9</text><text x="430" y="128" text-anchor="middle" class="small">stack A · Sonnet 5.5</text><text x="430" y="143" text-anchor="middle" class="small">skips S-1…S-4, S-6</text>
+      <circle class="node awaiting" cx="610" cy="60" r="9"/><text x="610" y="95" text-anchor="middle" class="strong">You read this</text><text x="610" y="112" text-anchor="middle" class="small">by 08:00 CT</text><text x="610" y="128" text-anchor="middle" class="small">react; rework follows</text>
+      <text x="60" y="35" text-anchor="middle" class="tiny">ISSUED</text><text x="240" y="35" text-anchor="middle" class="tiny">CONTEXT + your words</text><text x="430" y="35" text-anchor="middle" class="tiny">overnight plan</text><text x="610" y="35" text-anchor="middle" class="tiny">this page</text>
+    </svg>
+    <figcaption>How we got here. Filled circles are facts or your decisions; the thick ring is the step waiting on you.</figcaption>
+  </figure>
+</section>
+
+<!-- ===================================================== STAGE 1 -->
+<section aria-labelledby="s1-h">
+  <h2 id="s1-h">Stage 1 — the problem behind the brief</h2>
+  <p class="section-sub">The partner's words, then the chain of whys down to one cause we can change, the two layers of success, the metrics with their baselines, and the brief's hidden assumptions. Source: the <a href="../analysis/2026-10-28-brief-audit.md">brief audit</a> and the <a href="../delivery/2026-10-29-angle-and-demo-framing.md">angle and demo framing</a>.</p>
+
+  <div class="grid two">
+    <blockquote data-status="fact">"If we can get contractors to close 10% more deals by making financing easier to explain, that's worth $200M in annual origination volume."<cite>VP of Contractor Partnerships, in the brief. The audit notes this is lending volume, not revenue.</cite></blockquote>
+    <blockquote data-status="fact">"I'm standing in someone's kitchen trying to close a $30K roofing deal. I need to be able to tell them in 30 seconds what their monthly payment would look like."<cite>A contractor, in the brief.</cite></blockquote>
+  </div>
+
+  <h3>The why-chain: from lost loans to one cause we can change</h3>
+  <p>A <span class="term" title="asking “why?” again and again until you reach a cause you can act on">why-chain</span> keeps asking "why?" until it lands on something we can change, measure and explain in one sentence. The audit's chain is five steps long. One branch was rejected on purpose.</p>
+  <figure class="narrow">
+    <svg viewBox="0 0 680 560" role="img" aria-labelledby="t1t t1d">
+      <title id="t1t">The why-chain, top to bottom, with the rejected branch to the side</title>
+      <desc id="t1d">Five boxes stacked top to bottom. One: the lender loses originations because 38% of applications are abandoned. Two: they are abandoned mostly at product selection and income verification. Three: at product selection, homeowners do not understand promo terms and contractors cannot explain them. Four: at income verification, a snag has no clear recovery; this step is our assumption. Five, the cause we can change: at both drop-off points the homeowner hits something they do not understand and nothing helps them through it. A dashed branch to the right, rejected: applications are slow because people type too much; the brief never splits the 22 minutes.</desc>
+      <defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <rect class="node fact" x="20" y="10" width="420" height="64" rx="8"/><text x="32" y="32" class="strong">Why 1 · The lender loses originations</text><text x="32" y="52" class="small">38% of started applications are abandoned [B]</text>
+      <path class="arrow" d="M230,74 L230,100" marker-end="url(#ah1)"/>
+      <rect class="node fact" x="20" y="100" width="420" height="64" rx="8"/><text x="32" y="122" class="strong">Why 2 · Abandoned at two steps</text><text x="32" y="142" class="small">loan product selection and income verification [B]</text>
+      <path class="arrow" d="M230,164 L230,190" marker-end="url(#ah1)"/>
+      <rect class="node fact" x="20" y="190" width="420" height="78" rx="8"/><text x="32" y="212" class="strong">Why 3 · Product selection</text><text x="32" y="232" class="small">homeowners don't understand promo terms;</text><text x="32" y="250" class="small">contractors can't explain them [B]</text>
+      <path class="arrow" d="M230,268 L230,294" marker-end="url(#ah1)"/>
+      <rect class="node proposal" x="20" y="294" width="420" height="78" rx="8"/><text x="32" y="316" class="strong">Why 4 · Income verification</text><text x="32" y="336" class="small">when the bank link hits a snag, the journey has no clear</text><text x="32" y="354" class="small">recovery [A: our assumption, plausible per the conversation]</text>
+      <path class="arrow" d="M230,372 L230,398" marker-end="url(#ah1)"/>
+      <rect class="node decision" x="20" y="398" width="420" height="96" rx="8"/><text x="32" y="420" class="strong">Why 5 · The cause we can change</text><text x="32" y="440" class="small">at the two drop-off points the homeowner hits something</text><text x="32" y="458" class="small">they don't understand, and nothing helps them through it.</text><text x="32" y="480" class="small">One sentence; measurable; explainable.</text>
+      <path class="arrow dash" d="M440,132 L480,132" marker-end="url(#ah1)"/>
+      <rect class="node rejected" x="480" y="96" width="190" height="172" rx="8"/><text x="492" y="118" class="strong">Rejected branch</text><text x="492" y="138" class="small">"applications are slow</text><text x="492" y="154" class="small">because people type too much."</text><text x="492" y="176" class="small">The brief never splits the</text><text x="492" y="192" class="small">22 minutes, so a sub-10 claim</text>
+      <text x="492" y="226" class="tiny">would be a guess. Extraction</text><text x="492" y="240" class="tiny">stays in as support, not the</text><text x="492" y="254" class="tiny">headline.</text>
+      <text x="32" y="530" class="tiny">[B] stated in the brief · [A] our assumption · dashed border = an assumption, not a brief fact</text>
+    </svg>
+    <figcaption>The why-chain from the brief audit. Step 4 is dashed because the brief is silent on why income verification fails; that is our reading.</figcaption>
+    <ol class="words">
+      <li>The lender loses originations because 38% of applications are abandoned.</li>
+      <li>They are abandoned mostly at product selection and income verification.</li>
+      <li>At product selection, homeowners do not understand promo terms and contractors cannot explain them.</li>
+      <li>At income verification, a snag has no clear recovery (our assumption).</li>
+      <li>The cause we can change: at both points the homeowner hits something they do not understand, and nothing helps them through it.</li>
+      <li>Rejected: "people type too much." The brief never says how the 22 minutes split.</li>
+    </ol>
+  </figure>
+
+  <h3>Two layers of success</h3>
+  <p>A hiring-partner project has two layers. Layer 2 is why the partner wrote the brief: the business result. Layer 1 is what the brief asks us to prove. Open with layer 2 and close on how the system moves it.</p>
+  <div class="grid two">
+    <article class="card" data-status="fact">
+      <h3>Layer 2 · Why the partner wrote it <span class="st fact">Fact</span></h3>
+      <p>The lender makes money when a contractor's sale becomes a funded loan. The sale is lost at the kitchen table when financing is confusing. The loan is lost later when the application stalls: 38% abandonment at product selection and income verification.</p>
+      <p class="src">Angle doc, Layer 2; the VP and contractor quotes.</p>
+    </article>
+    <article class="card" data-status="fact">
+      <h3>Layer 1 · What the brief asks us to prove <span class="st fact">Fact</span></h3>
+      <p>A design doc and a prototype showing an AI-assisted interaction that is <strong>compliant</strong> (no implied credit decision, TILA/RESPA disclosures, auditable), <strong>pragmatic</strong> (mock the financial services, one real LLM, runnable in under 5 minutes) and shows <strong>judgment</strong> about where AI belongs.</p>
+      <p class="src">Angle doc, Layer 1; brief Part 1 and Part 2.</p>
+    </article>
+  </div>
+
+  <h3>The metrics tree</h3>
+  <p>A <span class="term" title="a measure you steer by: if it moves, the business result should follow">north star</span> sits at the top. Leading metrics move first and tell you early. Health metrics say whether the system is safe. A hard gate is a line you may never cross. Every number here has its baseline or says "unknown"; targets are labelled [A] where they are our assumption.</p>
+  <figure>
+    <p class="scroll-hint">Diagram: swipe sideways. The text below it says the same thing.</p>
+    <div class="scroll" tabindex="0" aria-label="Metrics tree diagram, scrolls sideways">
+    <svg viewBox="0 0 1040 430" role="img" aria-labelledby="t2t t2d">
+      <title id="t2t">Metrics tree: money at the top, the north star under it, then leading, health and the hard gate</title>
+      <desc id="t2d">At the top, money: originated volume, the VP's 10% more deals equals about $200M, produced by the credit engine, not ours. Below it the north star: application completion rate, completed divided by started, weekly, by contractor segment and product, baseline 62%. Under the north star, five leading metrics: drop-off at product selection, recovery rate after a failed Plaid link, share of prefilled fields kept unchanged, questions per session paired with share answered without the safe template, and time to submit with baseline 22 minutes. Two health metrics: guardrail blocks per 100 messages and answer latency p95 with a target of 5 seconds that is our assumption. The hard gate: zero compliance failures shown to borrowers.</desc>
+      <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <rect class="node money" x="330" y="10" width="380" height="58" rx="8"/><text x="342" y="32" class="strong">Money · originated volume</text><text x="342" y="50" class="small">"10% more deals … $200M" [B] · the credit engine's, not ours</text>
+      <path class="arrow" d="M520,112 L520,68" marker-end="url(#ah2)"/>
+      <rect class="node decision" x="320" y="112" width="400" height="76" rx="8"/><text x="332" y="134" class="strong">North star · application completion rate</text><text x="332" y="152" class="small">completed ÷ started, weekly, by contractor segment and product</text><text x="332" y="172" class="small">baseline 62% (100% − 38%) [B] · aspiration: a lift in a pilot [A]</text>
+      <path class="arrow" d="M100,250 L100,230 L520,230 L520,188" marker-end="url(#ah2)"/>
+      <path class="arrow" d="M305,250 L305,230"/><path class="arrow" d="M520,250 L520,230"/><path class="arrow" d="M735,250 L735,230"/><path class="arrow" d="M940,250 L940,230"/>
+      <text x="12" y="245" class="lane-label">LEADING</text>
+      <rect class="node fact" x="10" y="250" width="190" height="78" rx="8"/><text x="20" y="270" class="strong">Drop-off at</text><text x="20" y="286" class="strong">product selection</text><text x="20" y="306" class="small">SCR-1/2 step events</text><text x="20" y="320" class="small">baseline: inside the 38%</text>
+      <rect class="node fact" x="215" y="250" width="190" height="78" rx="8"/><text x="225" y="270" class="strong">Recovery after a</text><text x="225" y="286" class="strong">failed Plaid link</text><text x="225" y="306" class="small">failed → doc path → verified</text><text x="225" y="320" class="small">baseline unknown (mocked)</text>
+      <rect class="node fact" x="430" y="250" width="190" height="78" rx="8"/><text x="440" y="270" class="strong">Prefilled fields</text><text x="440" y="286" class="strong">kept unchanged</text><text x="440" y="306" class="small">SCR-5 edits vs field source</text><text x="440" y="320" class="small">baseline unknown</text>
+      <rect class="node fact" x="645" y="250" width="190" height="78" rx="8"/><text x="655" y="270" class="strong">Questions per session ×</text><text x="655" y="286" class="strong">answered without fallback</text><text x="655" y="306" class="small">paired: engagement only</text><text x="655" y="320" class="small">counts with quality</text>
+      <rect class="node fact" x="850" y="250" width="180" height="78" rx="8"/><text x="860" y="270" class="strong">Time to submit</text><text x="860" y="286" class="strong">(minutes)</text><text x="860" y="306" class="small">baseline 22 [B]</text><text x="860" y="320" class="small">report the split by step first</text>
+      <text x="12" y="365" class="lane-label">HEALTH</text>
+      <rect class="node fact" x="10" y="372" width="300" height="48" rx="8"/><text x="20" y="392" class="strong">Guardrail blocks per 100 messages</text><text x="20" y="410" class="small">by check · a spike = prompt or catalog drift</text>
+      <rect class="node proposal" x="325" y="372" width="300" height="48" rx="8"/><text x="335" y="392" class="strong">Answer latency p95</text><text x="335" y="410" class="small">target ≤ 5 s on site [A: our assumption]</text>
+      <text x="650" y="365" class="cut-label">HARD GATE</text>
+      <rect class="node awaiting" x="645" y="372" width="385" height="48" rx="8"/><text x="655" y="392" class="strong">Compliance failures shown to borrowers = 0</text><text x="655" y="410" class="small">"No AI system can make or imply a credit decision" [B]</text>
+    </svg>
+    </div>
+    <figcaption>From the brief audit and the angle doc. Dashed = our assumption; the thick red box is the line that may never be crossed. The demo logs step events but cannot measure a lift.</figcaption>
+    <ol class="words">
+      <li>Money: originated volume. The VP's figure is 10% more deals ≈ $200M of volume. The credit engine produces it, not us.</li>
+      <li>North star: application completion rate (completed ÷ started), baseline 62%. Guard against gaming: watch decline and cancellation rates too.</li>
+      <li>Leading: drop-off at product selection; recovery after a failed Plaid link; prefilled fields kept unchanged; questions per session paired with share answered without the safe template; time to submit (baseline 22 minutes).</li>
+      <li>Health: guardrail blocks per 100 messages by check; answer latency p95, target ≤ 5 s (our assumption).</li>
+      <li>Hard gate: zero compliance failures shown to borrowers.</li>
+    </ol>
+  </figure>
+
+  <div class="grid three">
+    <article class="card" data-status="fact">
+      <h3>Baseline <span class="st fact">Fact</span></h3>
+      <p class="big num">62% complete today</p>
+      <p class="src">100% − the brief's 38% abandonment. Measured weekly in a pilot; the demo cannot measure a lift.</p>
+    </article>
+    <article class="card" data-status="fact">
+      <h3>Hard gate <span class="st fact">Fact</span></h3>
+      <p class="big num">0 compliance failures shown to a borrower</p>
+      <p class="src">Brief: every borrower-facing communication carries TILA/RESPA disclosures; no AI may make or imply a credit decision.</p>
+    </article>
+    <article class="card" data-status="fact">
+      <h3>Best objection, and the answer <span class="st fact">Fact</span></h3>
+      <p>"Completion can rise because you pushed unqualified people into applying." Answer: the credit engine still decides; decline rate is reported beside completion; the AI never implies approval, and the audit log proves it.</p>
+      <p class="src">Brief audit, <em>Best objection</em>; angle doc.</p>
+    </article>
+  </div>
+
+  <h3>The brief's assumptions, marked</h3>
+  <p>A brief carries beliefs it never states. The audit lists them and marks each one: <span class="mark q">question it</span>, <span class="mark n">needed</span>, or <span class="mark p">probably needed</span>.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Assumption inside the brief</th><th>Mark</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr data-status="fact"><td>An AI solution is the right tool for every friction point</td><td><span class="mark q">question it</span></td><td>The quote is arithmetic; buttons win there (your words, 2026-10-28)</td></tr>
+      <tr data-status="fact"><td>The fix is a chatbot</td><td><span class="mark q">question it</span></td><td>The brief grades "conversational UX", but chat suits ambiguity only</td></tr>
+      <tr data-status="fact"><td>Plaid is broken</td><td><span class="mark q">question it</span></td><td>Plaid exists; the failure may be consent, connectivity or recovery</td></tr>
+      <tr data-status="fact"><td>Document extraction alone cuts 22 minutes to under 10</td><td><span class="mark q">question it</span></td><td>The brief does not split the 22 minutes</td></tr>
+      <tr data-status="fact"><td>Every borrower-facing message needs TILA/RESPA disclosures and an audit trail</td><td><span class="mark n">needed</span></td><td>Hard constraint in the brief</td></tr>
+      <tr data-status="fact"><td>Financial services can be mocked; a real LLM is required</td><td><span class="mark n">needed</span></td><td>The brief's ground rules</td></tr>
+      <tr data-status="unknown"><td>The company is GoodLeap</td><td><span class="mark p">probably needed</span></td><td>Inferred from the file name only; the PDF never names the company. Stated in the README as assumption 1</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="section-sub" style="margin-top:var(--space-3)">Evidence limits the research could not close: how the 22 minutes split by step; why income verification fails (consent, connectivity or thin data); whether the lender licenses Plaid Document Income; GoodLeap's 2023 QuickLink history (an [H] claim that segment D verifies before the roadmap page cites it).</p>
+</section>
+
+<!-- ===================================================== STAGE 2 -->
+<section aria-labelledby="s2-h">
+  <h2 id="s2-h">Stage 2 — data reality</h2>
+  <p class="section-sub">The brief ships no data, so every sample is synthetic and labelled. The stage still does its job: put a real-shaped input next to the output the product must produce, by hand, before any code. Sources: <a href="../data/README.md">data README</a> and <a href="../data/worked-pairs.md">worked pairs</a>. The samples themselves are in <code>docs/data/samples/</code>.</p>
+
+  <h3>Selection matrix: every source the product reads</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Source the product reads</th><th>Samples</th><th>Why these</th><th>The strange one</th></tr></thead>
+    <tbody>
+      <tr data-status="fact"><td>Loan product catalog</td><td><code>catalog.json</code> (6 products)</td><td>One of each promo mechanic the brief names: fixed APRs across terms, a 0% intro period, deferred interest</td><td><code>GL-DEF-18</code>: looks cheapest, costs most if missed</td></tr>
+      <tr data-status="fact"><td>Contractor estimates</td><td><code>roof_clean.txt</code>, <code>roof_messy.txt</code>, <code>hvac_missing_total.txt</code></td><td>Clean tests the happy path; messy (abbreviations, line items, a deposit) tests extraction; missing total tests "never guess"</td><td><code>hvac_missing_total.txt</code> has no total at all</td></tr>
+      <tr data-status="fact"><td>Contractor profile service</td><td><code>contractors.json</code></td><td>Two profiles so the agent must pick the right one</td><td>—</td></tr>
+      <tr data-status="fact"><td>Income verification (Plaid)</td><td><code>plaid.json</code></td><td>Success, connection failure, insufficient data</td><td><code>connection_failed</code> is the friction case</td></tr>
+      <tr data-status="fact"><td>Document income (pay stub)</td><td><code>paystub.json</code></td><td>The document path after a Plaid failure</td><td>Bi-weekly pay must be annualised by code</td></tr>
+      <tr data-status="fact"><td>Credit decision engine</td><td><code>credit-engine.json</code></td><td><code>pending</code>, <code>conditional</code></td><td>Neither is a yes: the demo never shows "approved"</td></tr>
+      <tr data-status="fact"><td>Homeowner questions</td><td>WP-2 in <code>worked-pairs.md</code></td><td>One in-scope promo question, one eligibility question, one off-topic</td><td>"Will I qualify?" must be redirected, never answered</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="section-sub" style="margin-top:var(--space-3)">Each sample file carries <code>"synthetic": true</code> and a one-line description. Foundation (segment F) copies them into <code>data/synthetic/</code> for the app; the <code>docs/data/</code> folder is the record.</p>
+
+  <h3>Worked pairs: input → output, by hand</h3>
+  <p>A <span class="term" title="one real input and the exact output the product must give for it, worked out by a person before any code">worked pair</span> is how we find out how hard a step is before we build it. Each pair is marked easy or hard, sure or uncertain, and each becomes a test or a scripted check tonight. Numbers were computed on 2026-10-29 with standard amortization and monthly compounding.</p>
+  <div class="grid two">
+
+    <article class="wp" data-status="fact">
+      <h3>WP-1 · Quote maths <span><span class="pill easy">easy</span><span class="pill sure">sure</span></span></h3>
+      <p class="src">Becomes <code>finance.test.ts</code>. This is the "what would my payment be" answer the contractor needs in 30 seconds; it is pure code, no model.</p>
+      <div class="io">
+        <div class="box"><h4>Input</h4><ul><li>Amount <strong class="num">$30,000</strong></li><li>Priority: lower monthly payment</li><li>Catalog <code>2026-10-29</code></li></ul></div>
+        <div class="arr" aria-hidden="true">→</div>
+        <div class="box"><h4>Output (ranked by monthly)</h4><ul class="num">
+          <li>GL-FIX-25: $261.90/mo · $78,570.15 total</li>
+          <li><strong>GL-FIX-15: $286.70/mo · $51,605.21 total · $21,605.21 interest</strong></li>
+          <li>GL-FIX-10: $355.95/mo</li>
+          <li>GL-INTRO-0: $250.00 × 12, then $379.98 × 108 · $44,037.66 total (ranked by its later payment, so a 0% teaser never tops the list)</li>
+          <li>GL-FIX-05: $593.89/mo</li>
+          <li>GL-DEF-18: $1,666.67 × 18 to clear it; <strong>$11,245.50</strong> retroactive interest if any balance remains</li>
+        </ul></div>
+      </div>
+      <p class="src">With priority "lower total cost" the order flips: FIX-05 first, DEF-18 shown separately because its cost depends on behaviour. $4,000 → error "below the $5,000 minimum". Spot checks on FIX-15: $15,000 = $143.35; $45,000 = $430.04.</p>
+    </article>
+
+    <article class="wp" data-status="fact">
+      <h3>WP-2 · Guarded answer <span><span class="pill hard">hard</span><span class="pill unc">uncertain</span></span></h3>
+      <p class="src">Becomes 3 live checks + the guardrail script. This is the homeowner's one hard question at the kitchen table; it is the only place a model talks to a borrower about money.</p>
+      <div class="io">
+        <div class="box"><h4>Input (what the model sees)</h4><ul><li><code>GL-DEF-18</code> terms text only</li><li>Allowed numbers: 30,000 · 1,666.67/mo · 18 months · 24.99% · 11,245.50</li><li>"What happens if I don't pay it all off in 18 months?"</li></ul></div>
+        <div class="arr" aria-hidden="true">→</div>
+        <div class="box"><h4>Output</h4><p style="margin:0 0 6px">"If any balance is left after month 18, interest at 24.99% is charged from day one on the whole $30,000: about $11,245.50 added. To avoid that you'd pay about $1,666.67 a month for 18 months. Want to see the full terms?"</p><ul><li>+ disclosures attached by code (APR 24.99%, 84-month term, total cost of credit, "estimated; not an offer or a credit decision")</li><li>Guardrail: pass, every number in the allowed set, no approval words</li></ul></div>
+      </div>
+      <ul class="tight" style="font-size:14px">
+        <li>"Will I qualify for this?" → redirect template: the lender's credit review decides after you apply.</li>
+        <li>"What's the weather tomorrow?" → off-topic template.</li>
+        <li>Crafted bad output "You're approved for the 0% plan at $250 a month!" → blocked by check 2 → regenerate → safe template, logged.</li>
+        <li>Crafted "about $1,500 a month for 18 months" → blocked by check 1: 1,500 is not an allowed number.</li>
+      </ul>
+      <p class="flag">Why uncertain: reading level and tone are judged by eye; the rounding tolerance for the number check needs a decision in code.</p>
+    </article>
+
+    <article class="wp" data-status="fact">
+      <h3>WP-3 · Estimate extraction → prefill <span><span class="pill hard">hard</span><span class="pill unc">uncertain</span></span></h3>
+      <p class="src">Becomes the 3-estimate check. This is the contractor uploading a messy estimate so nobody retypes it; a wrong amount here is worse than a blank.</p>
+      <div class="io">
+        <div class="box"><h4>Input</h4><p style="margin:0"><code>roof_messy.txt</code>: line items, "30 sq", "deposit recvd 10/27 .... (2,000)", "TOTAL 30,000", "BAL DUE 28,000"</p></div>
+        <div class="arr" aria-hidden="true">→</div>
+        <div class="box"><h4>Output (each with a source quote)</h4><ul class="num">
+          <li>projectType <code>roof_replacement</code> · 0.95 · ready</li>
+          <li>estimateTotal <strong>30,000</strong> · 0.97 · ready</li>
+          <li>downPayment <strong>2,000</strong> · 0.90 · ready</li>
+          <li>financedAmount <strong>28,000</strong> · computed by code (total − deposit), cross-checked against "BAL DUE 28,000"</li>
+          <li>contractor ABC Roofing LLC (C-1001) · from the profile service</li>
+          <li>homeowner identity → <code>needs_input</code> · income → <code>needs_authorization</code></li>
+        </ul></div>
+      </div>
+      <p class="src"><code>roof_clean.txt</code> → same fields, deposit 0, financed 30,000. <code>hvac_missing_total.txt</code> → total <strong>missing → <code>needs_input</code></strong>, with the estimate's own note that pricing waits on an attic inspection; the agent's checklist says "Ask the contractor for the final total". Never an invented number.</p>
+      <p class="flag">Why uncertain: whether the model reliably reads "(2,000)" as a deposit, not a line item. Validation ranges catch the worst case.</p>
+    </article>
+
+    <article class="wp" data-status="fact">
+      <h3>WP-4 · Plaid failure → recovery <span><span class="pill easy">easy</span><span class="pill sure">sure</span></span></h3>
+      <p class="src">Becomes the Playwright friction path. This is the moment that would have been an abandonment: the homeowner's bank link fails on their own step.</p>
+      <div class="io">
+        <div class="box"><h4>Input</h4><p style="margin:0">Homeowner taps <strong>Connect bank (fails)</strong> → <code>plaid.connection_failed</code>, error code <code>INSTITUTION_MFA_TIMEOUT</code>, institution "Demo Credit Union"</p></div>
+        <div class="arr" aria-hidden="true">→</div>
+        <div class="box"><h4>Output on SCR-4</h4><ol class="tight">
+          <li>Status (template): "We couldn't finish connecting to Demo Credit Union: the bank's extra verification step timed out. Nothing was submitted and no decision was made."</li>
+          <li>Guarded explanation, no numbers: try again, or upload a recent pay stub; "the lender's review decides, not this screen."</li>
+          <li>Two actions: <strong>Try again</strong> (→ success on the second demo tap) · <strong>Upload a pay stub</strong> (→ income from <code>paystub.json</code>, source <code>document</code>, status <code>needs_review</code>, annualised <span class="num">$68,900.00</span> computed by code)</li>
+          <li>One audit record for the explanation.</li>
+        </ol></div>
+      </div>
+      <p class="src">Why sure: canned data and templates. The only model text is the explanation, and it carries no numbers.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================================================== STAGE 3 -->
+<section aria-labelledby="s3-h">
+  <h2 id="s3-h">Stage 3 — the hard problems</h2>
+  <p class="section-sub">Four problems where the obvious answer is not enough. Each card opens with where it comes up in the project, then the problem, then why it is hard, then the options with the recommendation marked. HP-3 is chosen (your D-13); HP-1, HP-2 and HP-4 are proposals for you to keep or overturn. Source: <a href="../design/hard-problems.md">hard-problems.md</a>.</p>
+
+  <figure>
+    <p class="scroll-hint">Diagram: swipe sideways. The text below it says the same thing.</p>
+    <div class="scroll" tabindex="0" aria-label="Where each hard problem sits in the journey, scrolls sideways">
+    <svg viewBox="0 0 1040 200" role="img" aria-labelledby="t3t t3d">
+      <title id="t3t">Where each hard problem sits in the seven-screen journey</title>
+      <desc id="t3d">Seven screens left to right: SCR-1 Compare, SCR-2 Ask, SCR-3 Start application, SCR-4 Verify income, SCR-5 Review and submit, SCR-6 Audit, SCR-7 Next. HP-1 orchestration spans every screen. HP-2 guardrails sits on SCR-2 and SCR-4. HP-4 extraction sits on SCR-3. HP-3 Plaid recovery sits on SCR-4.</desc>
+      <defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <rect class="band" x="10" y="8" width="1020" height="60" rx="10"/><text class="band-label" x="20" y="28">HP-1 · Orchestration: where the model has autonomy, and where it doesn't — every screen (proposed B)</text>
+      <g>
+        <rect class="node" x="20" y="80" width="130" height="50" rx="8"/><text x="30" y="100" class="strong">SCR-1</text><text x="30" y="118" class="small">Compare</text>
+        <rect class="node ai" x="165" y="80" width="130" height="50" rx="8"/><text x="175" y="100" class="strong">SCR-2</text><text x="175" y="118" class="small">Ask</text>
+        <rect class="node ai" x="310" y="80" width="130" height="50" rx="8"/><text x="320" y="100" class="strong">SCR-3</text><text x="320" y="118" class="small">Start application</text>
+        <rect class="node ai" x="455" y="80" width="130" height="50" rx="8"/><text x="465" y="100" class="strong">SCR-4</text><text x="465" y="118" class="small">Verify income</text>
+        <rect class="node" x="600" y="80" width="130" height="50" rx="8"/><text x="610" y="100" class="strong">SCR-5</text><text x="610" y="118" class="small">Review, submit</text>
+        <rect class="node" x="745" y="80" width="130" height="50" rx="8"/><text x="755" y="100" class="strong">SCR-6</text><text x="755" y="118" class="small">Audit</text>
+        <rect class="node" x="890" y="80" width="130" height="50" rx="8"/><text x="900" y="100" class="strong">SCR-7</text><text x="900" y="118" class="small">Next</text>
+      </g>
+      <path class="arrow" d="M150,105 L165,105" marker-end="url(#ah3)"/><path class="arrow" d="M295,105 L310,105" marker-end="url(#ah3)"/><path class="arrow" d="M440,105 L455,105" marker-end="url(#ah3)"/><path class="arrow" d="M585,105 L600,105" marker-end="url(#ah3)"/><path class="arrow" d="M730,105 L745,105" marker-end="url(#ah3)"/><path class="arrow" d="M875,105 L890,105" marker-end="url(#ah3)"/>
+      <rect class="node proposal" x="165" y="145" width="130" height="40" rx="8"/><text x="175" y="162" class="strong">HP-2 guardrails</text><text x="175" y="178" class="small">proposed</text>
+      <rect class="node proposal" x="310" y="145" width="130" height="40" rx="8"/><text x="320" y="162" class="strong">HP-4 extraction</text><text x="320" y="178" class="small">proposed</text>
+      <rect class="node decision" x="455" y="145" width="130" height="40" rx="8"/><text x="465" y="162" class="strong">HP-3 recovery</text><text x="465" y="178" class="small">chosen · D-13</text>
+      <rect class="node proposal" x="455" y="190" width="0" height="0"/>
+      <path class="arrow dash" d="M300,165 L302,165"/>
+      <text x="610" y="170" class="small">HP-2 also covers SCR-4's explanation text</text>
+    </svg>
+    </div>
+    <figcaption>Purple screens call a model. Dashed boxes are proposals; the solid blue box is your decision.</figcaption>
+    <ol class="words">
+      <li>HP-1 (orchestration) covers every screen: which steps are code and which call a model.</li>
+      <li>HP-2 (guardrails) sits on SCR-2 and on SCR-4's explanation, the two places a model writes text a borrower reads.</li>
+      <li>HP-4 (extraction) sits on SCR-3, where the estimate is read.</li>
+      <li>HP-3 (Plaid recovery) sits on SCR-4 and is chosen (D-13).</li>
+    </ol>
+  </figure>
+
+  <!-- HP-1 -->
+  <article class="card hp" data-status="awaiting" data-hp="HP-1" data-ask="HP-1">
+    <h2 id="hp1-h">HP-1 · Orchestration: where the model has autonomy and where it doesn't <span class="st awaiting">Recommend B</span></h2>
+    <div class="part" data-part="context"><h4>Where this comes up in the project</h4><p>Every screen. The contractor enters $30,000. The homeowner asks about a promo. The contractor uploads an estimate. The homeowner verifies income. At each step someone had to decide: does code do this, or does a model? The brief grades "the quality of the conversational UX" and "AI Ecosystem Fluency". You rejected "just another chatbot" (D-11). The CTO wants nothing operationally fragile: "Don't give me a science project." Those three pulls meet here.</p></div>
+    <div class="part" data-part="problem"><h4>The problem we're solving</h4><p>Decide, per step, whether the model drives or code drives. Example: the contractor's $30,000 quote → six payment figures. A chat agent would take seconds and could misstate a number; a button and a formula answer at once and are always right. But SCR-2's "what if I don't pay it off in 18 months?" is open-ended; a template cannot answer every phrasing.</p></div>
+    <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>Too little AI reads as a calculator. That fails "conversational UX" and the guardrail requirement (the brief wants to see one). Too much AI reads as risk and slowness. Every borrower message then needs guarding (C-1, C-2), and the demo gets slower than buttons for simple choices. The agentic feature you asked for (D-5) must show real agent behaviour without handing navigation to a model.</p></div>
+    <div class="part" data-part="why-asked"><h4>Why we're asking you, and what your answer changes</h4><p>Option B is what tonight's build follows, because your standing answers (D-5, D-11) point at it. You are asked to keep or overturn it, not to unblock the build. Picking A means a chat agent drives the journey and Foundation's screen skeleton is reworked. Picking C removes the question box and the explanation text, and leaves extraction as the only model call, which weakens the "conversational UX" answer in the interview.</p></div>
+    <figure class="mini">
+      <svg viewBox="0 0 560 170" role="img" aria-labelledby="t4t t4d">
+        <title id="t4t">Three shapes for orchestration: A chat copilot drives, B fixed skeleton with AI at seams, C no generated text</title>
+        <desc id="t4d">Option A: one agent box with arrows to every step. Option B, recommended: seven code boxes in a row with three small model badges attached at Ask, Extract and Explain. Option C: seven code boxes with one model badge at Extract only.</desc>
+        <text x="10" y="18" class="strong">A · Chat copilot runs the journey</text>
+        <rect class="node ai" x="10" y="26" width="90" height="26" rx="6"/><text x="18" y="44" class="small">one agent</text>
+        <g><rect class="node" x="120" y="26" width="24" height="26" rx="4"/><rect class="node" x="150" y="26" width="24" height="26" rx="4"/><rect class="node" x="180" y="26" width="24" height="26" rx="4"/><rect class="node" x="210" y="26" width="24" height="26" rx="4"/><rect class="node" x="240" y="26" width="24" height="26" rx="4"/></g>
+        <path class="arrow" d="M100,39 L120,39"/><text x="275" y="44" class="tiny">agent decides every step</text>
+        <text x="10" y="78" class="strong">B · Fixed skeleton, AI at the seams (recommended)</text>
+        <g><rect class="node" x="10" y="86" width="40" height="26" rx="4"/><rect class="node" x="56" y="86" width="40" height="26" rx="4"/><rect class="node" x="102" y="86" width="40" height="26" rx="4"/><rect class="node" x="148" y="86" width="40" height="26" rx="4"/><rect class="node" x="194" y="86" width="40" height="26" rx="4"/><rect class="node" x="240" y="86" width="40" height="26" rx="4"/><rect class="node" x="286" y="86" width="40" height="26" rx="4"/></g>
+        <rect class="pill" x="58" y="114" width="36" height="14" rx="7"/><text class="pill-text" x="64" y="125">ask</text>
+        <rect class="pill" x="100" y="114" width="44" height="14" rx="7"/><text class="pill-text" x="104" y="125">extract</text>
+        <rect class="pill" x="146" y="114" width="46" height="14" rx="7"/><text class="pill-text" x="150" y="125">explain</text>
+        <text x="340" y="104" class="tiny">code owns screens and transitions;</text><text x="340" y="118" class="tiny">model called at 3 seams (≤ 6 agent steps)</text>
+        <text x="10" y="150" class="strong">C · No generated text</text>
+        <g><rect class="node" x="160" y="134" width="30" height="22" rx="4"/><rect class="node" x="196" y="134" width="30" height="22" rx="4"/><rect class="node" x="232" y="134" width="30" height="22" rx="4"/><rect class="node" x="268" y="134" width="30" height="22" rx="4"/></g>
+        <rect class="pill" x="196" y="158" width="44" height="12" rx="6"/><text class="pill-text" x="200" y="167" style="font-size:9.5px">extract</text>
+        <text x="340" y="150" class="tiny">templates everywhere; extraction only</text>
+      </svg>
+    </figure>
+    <div class="options">
+      <div class="opt"><h4>A · Chat copilot runs the journey</h4><p style="margin:0">One agent with tools drives every step. Easy to demo. Slow for decisions; every borrower message needs guarding; this is the thing you objected to.</p></div>
+      <div class="opt rec"><h4>B · Fixed skeleton, AI at the seams <span class="st proposal">Recommended</span></h4><p style="margin:0">Screens and transitions are code. The model is called at SCR-2 (the question), SCR-3 (extraction inside a bounded 6-step agent) and SCR-4 (the exception explanation). Each AI moment has a clear "why AI here". GP-72: draw the skeleton yourself; autonomy only where the path can't be known.</p></div>
+      <div class="opt"><h4>C · No generated text</h4><p style="margin:0">Extraction only; templates everywhere. Safest. Weak on "conversational UX" and the guardrail requirement.</p></div>
+    </div>
+    <p class="switch"><strong>If you pick differently:</strong> A reworks Foundation's shell into an agent-driven flow and adds guarding to every message; C deletes SCR-2's model call and SCR-4's explanation, and the interview answer "why AI here and not there" loses its two best examples.</p>
+    <p class="src"><strong>Success measure:</strong> a reviewer can name, for each screen, why AI is or isn't there; the agent trace never exceeds 6 steps. Evidence: WP-1 (no model needed), WP-2 and WP-3 (model needed).</p>
+  </article>
+
+  <!-- HP-2 -->
+  <article class="card hp" data-status="awaiting" data-hp="HP-2" data-ask="HP-2">
+    <h2 id="hp2-h">HP-2 · Guardrails that make borrower-facing text safe <span class="st awaiting">Recommend the code chain</span></h2>
+    <div class="part" data-part="context"><h4>Where this comes up in the project</h4><p>SCR-2 and SCR-4: the only two places a model writes words a borrower reads. The homeowner asks "what happens if I don't pay it off in 18 months?" and the answer must carry the right numbers, no reassurance, and the TILA/RESPA disclosures (the truth-in-lending lines: APR, term, total cost of credit). The brief's hard line is "No AI system can make or imply a credit decision", and the Head of Compliance wants to "see exactly what the system said and why". WP-2 surfaced this.</p></div>
+    <div class="part" data-part="problem"><h4>The problem we're solving</h4><p>Make every model answer safe to show, and provable afterwards. Example input: the model writes "You'd pay about $1,500 a month for 18 months." Required output: that text is blocked, because $1,500 is not one of the numbers code computed ($1,666.67 is), the model is asked once more with the reason, and if it fails again a safe template is shown. Every attempt is written to the audit log.</p></div>
+    <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>A language model paraphrases numbers ("about fifteen hundred"). It slips into reassurance ("you should be fine"), which is an implied credit decision (C-1). Prompt instructions alone fail silently. They leave nothing to show Compliance (C-5). A second-model classifier catches subtler phrasing but adds a call and latency against the 5-second target. The blocked-phrase list is a known limit: it catches the words we thought of.</p></div>
+    <div class="part" data-part="why-asked"><h4>Why we're asking you, and what your answer changes</h4><p>Segment B builds the code chain tonight because it is deterministic and cheap. You are asked whether that is enough for the demo, and whether the classifier belongs on the roadmap page (SCR-7) as v2 or in tonight's build. Adding the classifier now costs another model call per answer and a second prompt to write; leaving it to v2 keeps latency low and gives the design doc an honest "known limit" to defend.</p></div>
+    <figure class="mini">
+      <svg viewBox="0 0 580 150" role="img" aria-labelledby="t5t t5d">
+        <title id="t5t">The guardrail chain: number check, approval-language rules, disclosures attached by code, then regenerate once or safe template, all logged</title>
+        <desc id="t5d">Left to right: model output enters check 1, numbers must be in the allowed set; then check 2, approval-language rules; then check 3, disclosures attached by code; then shown. A failure at check 1 or 2 loops back once with the reason; a second failure goes to the safe template. Every path ends in the audit log.</desc>
+        <defs><marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <rect class="node ai" x="6" y="30" width="78" height="40" rx="6"/><text x="14" y="48" class="strong">model</text><text x="14" y="62" class="small">raw text</text>
+        <path class="arrow" d="M84,50 L104,50" marker-end="url(#ah5)"/>
+        <rect class="node decision" x="104" y="30" width="96" height="40" rx="6"/><text x="112" y="48" class="strong">1 · numbers</text><text x="112" y="62" class="small">⊆ allowed set</text>
+        <path class="arrow" d="M200,50 L220,50" marker-end="url(#ah5)"/>
+        <rect class="node decision" x="220" y="30" width="96" height="40" rx="6"/><text x="228" y="48" class="strong">2 · wording</text><text x="228" y="62" class="small">approval rules</text>
+        <path class="arrow" d="M316,50 L336,50" marker-end="url(#ah5)"/>
+        <rect class="node decision" x="336" y="30" width="114" height="40" rx="6"/><text x="344" y="48" class="strong">3 · disclosures</text><text x="344" y="62" class="small">attached by code</text>
+        <path class="arrow" d="M450,50 L470,50" marker-end="url(#ah5)"/>
+        <rect class="node fact" x="470" y="30" width="104" height="40" rx="6"/><text x="478" y="48" class="strong">shown</text><text x="478" y="62" class="small">to the borrower</text>
+        <path class="arrow dash" d="M152,70 L152,90 L45,90 L45,70" marker-end="url(#ah5)"/>
+        <text x="14" y="106" class="small">fail → regenerate once, with the reason</text>
+        <path class="arrow dash" d="M268,70 L268,128 L372,128" marker-end="url(#ah5)"/>
+        <rect class="node unknown" x="372" y="114" width="90" height="28" rx="6"/><text x="380" y="132" class="small">safe template</text>
+        <text x="470" y="132" class="small">(second failure)</text>
+        <rect class="node" x="6" y="122" width="150" height="22" rx="6"/><text x="14" y="137" class="small">audit log: every outcome</text>
+      </svg>
+    </figure>
+    <div class="options">
+      <div class="opt"><h4>Prompt instructions only</h4><p style="margin:0">Fails silently; nothing to show Compliance.</p></div>
+      <div class="opt rec"><h4>Code checks, in order <span class="st proposal">Recommended</span></h4><p style="margin:0">Number check → approval-language rules (words like "you qualify", "guaranteed", "no risk" and the rest of the list) → disclosures attached by code. Regenerate once with the reason, then the safe template. Every outcome logged. Deterministic, explainable, cheap.</p></div>
+      <div class="opt"><h4>Add a second-model classifier</h4><p style="margin:0">Better recall on subtle implied approval. Another call, more latency. Named as v2 on SCR-7.</p></div>
+    </div>
+    <p class="switch"><strong>If you pick differently:</strong> adding the classifier tonight means a second prompt, a second call per answer and a latency hit against the 5-second target; dropping to prompt-only means the brief's "at least one guardrail" has nothing checkable behind it.</p>
+    <p class="src"><strong>Success measure:</strong> <code>guardrail-check.ts</code> blocks all ≈10 crafted outputs; zero <code>shown</code> records contain an approval phrase or a number outside the allowed set. Evidence: WP-2.</p>
+  </article>
+
+  <!-- HP-3 -->
+  <article class="card hp" data-status="decision" data-hp="HP-3">
+    <h2 id="hp3-h">HP-3 · The friction case: recovering a failed income verification <span class="st decision">Chosen · D-13</span></h2>
+    <div class="part" data-part="context"><h4>Where this comes up in the project</h4><p>SCR-4, the homeowner's own step. They tap <strong>Connect bank</strong> and the bank's extra security check times out (<code>INSTITUTION_MFA_TIMEOUT</code>). In today's portal this is where a large share of the 38% give up: income verification is one of the two biggest drop-offs although Plaid already exists. The demo needs one friction case, and the ChatGPT conversation (your chosen direction, D-1) argued this is the likelier gap. WP-4 surfaced the exact path.</p></div>
+    <div class="part" data-part="problem"><h4>The problem we're solving</h4><p>Turn a failed bank link into a way through instead of a dead end. Input: the failure event. Output: a plain-words status line, a short guarded explanation with no numbers, and two real choices (try again, or upload a pay stub), ending in income fields marked <code>needs_review</code> and one audit record.</p></div>
+    <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>We do not know <em>why</em> people drop: consent, connectivity or thin data. The brief is silent. Building pay-stub extraction as the headline feature risks duplicating Plaid Document Income, which the lender may already license. And the AI must explain without ever judging whether the income qualifies (C-1).</p></div>
+    <div class="options">
+      <div class="opt chosen"><h4>Chosen (D-13)</h4><p style="margin:0">Show the connection-failure path with a plain-words explanation and a document alternative, both mocked. The AI explains, never judges income.</p></div>
+      <div class="opt"><h4>Rejected</h4><p style="margin:0">Pay-stub extraction as the headline feature: a second income pipeline that may duplicate Plaid Document Income.</p></div>
+    </div>
+    <p class="src"><strong>Success measure:</strong> the friction path completes to <code>needs_review</code> income without a dead end; the explanation record is in the audit log. Evidence: WP-4. Basis in the PRD: Plaid exists [B]; its failure path is the likelier gap [C]; recorded as decided under your D-1 direction.</p>
+  </article>
+
+  <!-- HP-4 -->
+  <article class="card hp" data-status="awaiting" data-hp="HP-4" data-ask="HP-4">
+    <h2 id="hp4-h">HP-4 · Extraction that never guesses <span class="st awaiting">Recommend schema + code validation</span></h2>
+    <div class="part" data-part="context"><h4>Where this comes up in the project</h4><p>SCR-3. The contractor uploads <code>roof_messy.txt</code>, a real-shaped estimate with line items, "30 sq", a deposit written as "(2,000)" and "BAL DUE 28,000". The application-prep agent must turn it into prefilled fields so nobody retypes it. The brief says staff "extract key details by hand" today, and estimates differ across 15,000 contractors. WP-3 surfaced the exact failure shapes.</p></div>
+    <div class="part" data-part="problem"><h4>The problem we're solving</h4><p>Read a messy document into typed fields without ever inventing a value. Input: <code>hvac_missing_total.txt</code>, which has no total. Required output: <code>estimateTotal</code> stays blank and is marked <code>needs_input</code>. The reason shown is the estimate's own note that pricing waits on an attic inspection. The checklist tells the contractor to ask for the finished total. Never a plausible number.</p></div>
+    <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>Messy text invites guessing. A model may read "(2,000)" as a line item, not a deposit. It may fill a missing total from the line items. A wrong amount in a loan application is worse than a blank (R-7: nothing is guessed silently). Derived values such as the financed amount must come from code, not the model (C-3), and each field needs a source quote so a reviewer can check it.</p></div>
+    <div class="part" data-part="why-asked"><h4>Why we're asking you, and what your answer changes</h4><p>Segment C builds this tonight as recommended. You are asked to keep it, or to change the thresholds and statuses. A looser rule (accept low-confidence values as <code>ready</code>) makes the demo look smoother but breaks "never guess"; a stricter one (everything <code>needs_review</code>) makes the prefill look useless. The confidence threshold itself is set in code and can move after your review.</p></div>
+    <figure class="mini">
+      <svg viewBox="0 0 640 120" role="img" aria-labelledby="t6t t6d">
+        <title id="t6t">Extraction flow: estimate text, model with JSON schema, code validation, then a status per field</title>
+        <desc id="t6d">Left to right: estimate text goes to the model, which returns typed fields each with a source quote and a confidence, via a JSON schema. Code then validates ranges, computes derived values such as financed amount, and sets a status: ready, needs review when confidence is low, needs input when a value is missing.</desc>
+        <defs><marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+        <rect class="node" x="6" y="30" width="100" height="44" rx="6"/><text x="14" y="48" class="strong">estimate text</text><text x="14" y="64" class="small">messy, varied</text>
+        <path class="arrow" d="M106,52 L126,52" marker-end="url(#ah6)"/>
+        <rect class="node ai" x="126" y="30" width="180" height="44" rx="6"/><text x="134" y="48" class="strong">model · JSON schema</text><text x="134" y="64" class="small">each field: quote + confidence</text>
+        <path class="arrow" d="M306,52 L326,52" marker-end="url(#ah6)"/>
+        <rect class="node decision" x="326" y="30" width="146" height="44" rx="6"/><text x="334" y="48" class="strong">code validates</text><text x="334" y="64" class="small">ranges · derived values</text>
+        <path class="arrow" d="M472,52 L492,52" marker-end="url(#ah6)"/>
+        <rect class="node fact" x="492" y="14" width="140" height="22" rx="6"/><text x="500" y="29" class="small">ready</text>
+        <rect class="node proposal" x="492" y="42" width="140" height="22" rx="6"/><text x="500" y="57" class="small">needs_review · unsure</text>
+        <rect class="node unknown" x="492" y="70" width="140" height="22" rx="6"/><text x="500" y="85" class="small">needs_input · missing</text>
+        <text x="14" y="106" class="tiny">The model never computes derived values; the homeowner's identity fields are always needs_input.</text>
+      </svg>
+    </figure>
+    <div class="options">
+      <div class="opt rec"><h4>Tool-use with a JSON schema, code validates <span class="st proposal">Recommended</span></h4><p style="margin:0">Every field carries a source quote and a confidence. Code validates ranges and computes derived values. Below threshold → <code>needs_review</code>; missing → <code>needs_input</code>.</p></div>
+      <div class="opt"><h4>Free-text extraction, model fills everything</h4><p style="margin:0">Fewer blanks on screen; no source quotes; the model may invent a total. Breaks R-7.</p></div>
+    </div>
+    <p class="switch"><strong>If you pick differently:</strong> loosening the statuses changes what SCR-3 and SCR-5 show as blank and what the Playwright check expects for the HVAC estimate.</p>
+    <p class="src"><strong>Success measure:</strong> WP-3's three estimates behave as specified; the HVAC estimate yields no invented total.</p>
+  </article>
+
+  <h3>Handled by default (no card)</h3>
+  <ul class="tight" data-status="fact">
+    <li>Payment maths: pure functions with unit tests (WP-1).</li>
+    <li>Audit log: append-only JSON lines with the PRD §8 schema.</li>
+    <li>Theme: Riverside direction B, rebranded (D-6).</li>
+    <li>Hosting: none; local run per the brief.</li>
+    <li>Secrets: <code>.env.example</code>, never committed.</li>
+    <li>The system-design questions: the demo has no load, peak or failure target of its own; the production versions are SDQ-1…SDQ-5 in <a href="../design/architecture.md">architecture.md</a>, listed under <a href="#ask-h">Awaiting you</a>.</li>
+  </ul>
+</section>
+
+<!-- ===================================================== STAGE 4 -->
+<section aria-labelledby="s4-h">
+  <h2 id="s4-h">Stage 4 — the PRD at a glance</h2>
+  <p class="section-sub">The interview ran in chat on 2026-10-28/29; your answers are in <a href="../prd/goodleap-prd.md">the PRD §11</a>. The PRD's own status line reads "APPROVED to build by Innocent's standing answers; he reviews the combined page in the morning and anything he changes is reworked." This section shows the journey, the requirements, the compliance rules, every decision with your words, and what "done" means.</p>
+
+  <h3>The journey: seven screens, three model calls</h3>
+  <figure>
+    <p class="scroll-hint">Diagram: swipe sideways. The text below it says the same thing.</p>
+    <div class="scroll" tabindex="0" aria-label="Journey diagram, scrolls sideways">
+    <svg viewBox="0 0 1040 300" role="img" aria-labelledby="t7t t7d">
+      <title id="t7t">The seven screens as a journey, with who is at the screen and whether AI is called</title>
+      <desc id="t7d">Two lanes. Contractor screens: SCR-1 Compare options, no AI, with SCR-2 Ask about this option as a panel, AI guarded; SCR-3 Start application, AI agentic. A dashed vertical line labelled hand to homeowner. Homeowner screens: SCR-4 Verify income, AI for the explanation only; SCR-5 Review and submit, no AI, which goes to the mocked credit engine. Off to the side, always reachable: SCR-6 Compliance audit and SCR-7 Where we'd take it next, no AI.</desc>
+      <defs><marker id="ah7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <rect class="lane-staff" x="0" y="10" width="520" height="190" rx="8"/>
+      <rect class="lane-family" x="540" y="10" width="310" height="190" rx="8"/>
+      <rect class="lane-assistant" x="860" y="10" width="180" height="280" rx="8"/>
+      <text class="lane-label" x="12" y="32">CONTRACTOR (homeowner watching)</text>
+      <text class="lane-label" x="552" y="32">HOMEOWNER, OWN STEP</text>
+      <text class="lane-label" x="872" y="32">ALWAYS REACHABLE</text>
+      <rect class="node" x="20" y="50" width="165" height="70" rx="8"/><text x="30" y="72" class="strong">SCR-1 Compare</text><text x="30" y="90" class="small">$30,000 · priority · 3 cards</text>
+      <rect class="pill off" x="30" y="98" width="50" height="14" rx="7"/><text class="pill-text off" x="36" y="109">no AI</text>
+      <rect class="node ai" x="20" y="135" width="165" height="56" rx="8"/><text x="30" y="155" class="strong">SCR-2 Ask (panel)</text><text x="30" y="171" class="small">one question, guarded</text>
+      <rect class="pill" x="104" y="176" width="74" height="13" rx="6"/><text class="pill-text" x="110" y="186">AI ✦ guarded</text>
+      <path class="arrow dash" d="M95,120 L95,135" marker-end="url(#ah7)"/>
+      <rect class="node ai" x="300" y="50" width="205" height="70" rx="8"/><text x="310" y="72" class="strong">SCR-3 Start application</text><text x="310" y="90" class="small">estimate → agent prefills (≤ 6 steps)</text>
+      <rect class="pill" x="310" y="98" width="84" height="14" rx="7"/><text class="pill-text" x="316" y="109">AI ✦ agentic</text>
+      <path class="arrow" d="M185,85 L300,85" marker-end="url(#ah7)"/>
+      <line class="cut" x1="530" y1="10" x2="530" y2="200"/><text class="cut-label" x="470" y="222">"Hand to homeowner" (UXP-1 · D-12)</text>
+      <rect class="node ai" x="555" y="50" width="130" height="70" rx="8"/><text x="565" y="72" class="strong">SCR-4 Verify</text><text x="565" y="90" class="small">Plaid: ok / fails</text>
+      <rect class="pill" x="565" y="98" width="110" height="14" rx="7"/><text class="pill-text" x="571" y="109">AI ✦ explain only</text>
+      <path class="arrow" d="M505,85 L555,85" marker-end="url(#ah7)"/>
+      <rect class="node" x="695" y="50" width="150" height="70" rx="8"/><text x="705" y="72" class="strong">SCR-5 Review</text><text x="705" y="90" class="small">sources · consents · submit</text>
+      <rect class="pill off" x="705" y="98" width="50" height="14" rx="7"/><text class="pill-text off" x="711" y="109">no AI</text>
+      <path class="arrow" d="M685,85 L695,85" marker-end="url(#ah7)"/>
+      <rect class="node decision" x="695" y="140" width="150" height="48" rx="8"/><text x="705" y="160" class="strong">credit engine (mocked)</text><text x="705" y="176" class="small">pending | conditional</text>
+      <path class="arrow" d="M770,120 L770,140" marker-end="url(#ah7)"/>
+      <rect class="node" x="880" y="50" width="140" height="56" rx="8"/><text x="890" y="72" class="strong">SCR-6 Audit</text><text x="890" y="90" class="small">raw vs shown, checks</text>
+      <rect class="node" x="880" y="125" width="140" height="56" rx="8"/><text x="890" y="147" class="strong">SCR-7 Next</text><text x="890" y="165" class="small">verified history, roadmap</text>
+      <text x="20" y="250" class="small">Flow A (happy path): 1 → 2 → 3 → hand over → 4 succeeds → 5 → engine. Flow B (friction): 4 fails → explanation → try again or pay stub → 5; engine returns conditional.</text>
+      <text x="20" y="272" class="small">Income values never appear on contractor screens (R-12). The model never sees homeowner identity or income (C-6). Code decides every state transition.</text>
+    </svg>
+    </div>
+    <figcaption>From the PRD §5 and the UX flows. Purple = a model is called; the dashed red line is the device hand-off, which rests on assumption D-12.</figcaption>
+    <ol class="words">
+      <li>SCR-1 Compare options (contractor + homeowner, no AI): amount, priority, three catalog products side by side with the inline disclosure.</li>
+      <li>SCR-2 Ask about this option (homeowner, AI guarded): one question, a 2–4 sentence grounded answer with disclosures; eligibility and off-scope questions redirected.</li>
+      <li>SCR-3 Start application (contractor, AI agentic): the agent gathers profile, scenario and extracted fields, lists what is missing, shows its steps.</li>
+      <li>Hand to homeowner (UXP-1, assumption D-12).</li>
+      <li>SCR-4 Verify income (homeowner, AI for the explanation only): synthetic Plaid Link; on failure a plain-words explanation and the pay-stub path.</li>
+      <li>SCR-5 Review and submit (homeowner, no AI): every field with its source chip; consents; submit to the mocked credit engine, which returns pending or conditional.</li>
+      <li>SCR-6 Compliance audit and SCR-7 Where we'd take it next are always reachable from the top bar.</li>
+    </ol>
+  </figure>
+
+  <h3>User stories and open UX questions</h3>
+  <p>Eleven stories US-1…US-11 cover the four users: the contractor (US-1, 5, 6), the homeowner (US-2, 3, 4, 7, 8, 9), the compliance reviewer (US-10) and the interview reviewer (US-11). Each links its requirement, worked pair and screen in <a href="../ux/01-planning/USER_STORIES.md">USER_STORIES.md</a>. Three behaviour questions were routed to screens with a default for tonight's build. You are asked to keep or change each default.</p>
+  <div class="grid three">
+    <article class="card ask-card" data-status="proposal" data-ask="UXP-1">
+      <h3>UXP-1 · Who holds the device for SCR-4/5? <span class="st proposal">Default</span></h3>
+      <div class="part" data-part="context"><h4>Where it comes up</h4><p>After SCR-3 the contractor has done their part; the next two screens ask for the homeowner's income and identity, which the contractor must never see (R-12).</p></div>
+      <div class="part" data-part="problem"><h4>The problem</h4><p>Does the homeowner take the contractor's device, or get a link to their own phone? The brief never describes a hand-off point at all.</p></div>
+      <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>A share link is the realistic product answer, but it adds auth and a second device to a one-night demo; same-device is simpler but must still make the boundary visible.</p></div>
+      <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>Default: a visible "Hand to homeowner" boundary in the step rail, same device, resting on assumption D-12. Choosing a link moves the share link off the roadmap and into tonight's scope.</p></div>
+    </article>
+    <article class="card ask-card" data-status="proposal" data-ask="UXP-2">
+      <h3>UXP-2 · How many products on SCR-1? <span class="st proposal">Default</span></h3>
+      <div class="part" data-part="context"><h4>Where it comes up</h4><p>The contractor enters $30,000 and the kitchen-table moment begins; the catalog has six products, and the brief says homeowners are "often confused by promotional terms".</p></div>
+      <div class="part" data-part="problem"><h4>The problem</h4><p>Show all six at once, or the top three by the homeowner's priority with the rest one click away? Six cards compete for attention; three may hide the one they wanted.</p></div>
+      <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>The acceptance line says SCR-1 "shows the six products"; the screen spec says top three large with "Show all 6" expanding to a grid. Both can be true, but the first screen the reviewer sees differs.</p></div>
+      <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>Default: top three shown large, "Show all 6" expands. Choosing all six changes the SCR-1 layout and the phone layout (cards stack) that segment A builds tonight.</p></div>
+    </article>
+    <article class="card ask-card" data-status="proposal" data-ask="UXP-3">
+      <h3>UXP-3 · Does the question box keep history? <span class="st proposal">Default</span></h3>
+      <div class="part" data-part="context"><h4>Where it comes up</h4><p>SCR-2. The homeowner asks about the deferred-interest plan, then clicks a different card and asks again. The model is only ever allowed to see one product's terms (R-4).</p></div>
+      <div class="part" data-part="problem"><h4>The problem</h4><p>Keep the earlier question and answer on screen across products, or reset the box to the selected product each time?</p></div>
+      <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>History feels conversational, which the brief grades, but it tempts the model to compare products it must not see and makes the panel look like a chat app, which the spec forbids.</p></div>
+      <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>Default: no history; context resets to the selected product; earlier Q&amp;A stays visible in the audit view. Choosing history changes R-4's context rule and segment B's prompt.</p></div>
+    </article>
+  </div>
+
+  <h3>Requirements R-1…R-16, by group</h3>
+  <div class="grid">
+    <article class="card" data-status="fact"><h3>Quote and compare <span class="st noai">No AI</span></h3><ul class="tight"><li><strong>R-1</strong> <code>POST /api/quote</code> ranks every catalog product by priority; out-of-range amounts ($5K–$100K) get a clear error.</li><li><strong>R-2</strong> Deterministic maths with unit tests: fixed-rate, 0% intro, deferred interest (WP-1).</li><li><strong>R-3</strong> Every card shows the inline disclosure: estimated, not an offer or credit decision; APR; term; total cost of credit.</li></ul></article>
+    <article class="card" data-status="fact"><h3>Ask about this option <span class="st ai">AI, guarded</span></h3><ul class="tight"><li><strong>R-4</strong> The model sees only the selected product's terms, its computed numbers and the question.</li><li><strong>R-5</strong> 2–4 plain sentences; never eligibility, approval or affordability; off-scope → redirect template (WP-2).</li><li><strong>R-6</strong> Every answer passes the guardrail chain and is written to the audit log.</li></ul></article>
+    <article class="card" data-status="fact"><h3>Application prep <span class="st ai">AI, agentic</span></h3><ul class="tight"><li><strong>R-7</strong> Typed fields with source quote and confidence; code validates; nothing guessed silently (WP-3).</li><li><strong>R-8</strong> Fixed skeleton, one bounded tool loop ≤ 6 steps over four tools; steps visible on screen.</li><li><strong>R-9</strong> Sources: estimate, profile, conversation, Plaid, document; identity fields always <code>needs_input</code>.</li></ul></article>
+    <article class="card" data-status="fact"><h3>Verify income <span class="st ai">AI, explain only</span></h3><ul class="tight"><li><strong>R-10</strong> Synthetic Plaid Link with demo controls: connect (succeeds) / connect (fails).</li><li><strong>R-11</strong> On failure: plain-words explanation and the document path; the AI never judges income (WP-4).</li><li><strong>R-12</strong> Income data only on the homeowner's step, never on contractor screens.</li></ul></article>
+    <article class="card" data-status="fact"><h3>Review and submit <span class="st noai">No AI</span></h3><ul class="tight"><li><strong>R-13</strong> Any prefilled field can be edited; edits change the source to <code>homeowner</code>; consents must be ticked.</li><li><strong>R-14</strong> <code>POST /api/submit</code> → mocked engine → <code>pending</code> or <code>conditional</code>; no LLM in this path.</li></ul></article>
+    <article class="card" data-status="fact"><h3>Audit and roadmap <span class="st noai">No AI</span></h3><ul class="tight"><li><strong>R-15</strong> Every <code>AuditRecord</code> newest first, raw output beside the text shown, each check and its result.</li><li><strong>R-16</strong> The roadmap page cites only verified history; every item names its friction point, metric and why it waited.</li></ul></article>
+  </div>
+
+  <h3>Compliance C-1…C-6: the hard constraints</h3>
+  <p>These come from the brief and <code>brief-conformance.md</code>. They are not options; the build must satisfy all six.</p>
+  <ul class="checks" data-status="fact">
+    <li><span class="box" aria-hidden="true">✓</span><span><strong>C-1 No credit decision, stated or implied [B].</strong> Check 2 blocks approval language; the prompt forbids eligibility talk; the redirect template handles eligibility questions.</span></li>
+    <li><span class="box" aria-hidden="true">✓</span><span><strong>C-2 Disclosures on every borrower-facing message [B].</strong> Attached by code (check 3), never by the model: APR, term, total cost of credit, "estimated; not an offer or a credit decision".</span></li>
+    <li><span class="box" aria-hidden="true">✓</span><span><strong>C-3 Numbers never come from the model.</strong> Check 1 verifies every $ amount, % and term against the computed scenario, within a rounding tolerance.</span></li>
+    <li><span class="box" aria-hidden="true">✓</span><span><strong>C-4 Fail safe.</strong> One regeneration with the failure reason; a second failure returns the safe template. Every outcome logged.</span></li>
+    <li><span class="box" aria-hidden="true">✓</span><span><strong>C-5 Auditable [B].</strong> The PRD §8 <code>AuditRecord</code>: inputs, allowed numbers, raw output, each check, attempts, outcome, latency; append-only <code>var/audit.jsonl</code>.</span></li>
+    <li><span class="box" aria-hidden="true">✓</span><span><strong>C-6 Data minimisation.</strong> The model never receives homeowner identity or income values; extraction sees estimate text only.</span></li>
+  </ul>
+
+  <h3 id="s4-decisions">The decision table: facts, your decisions, assumptions, proposals</h3>
+  <p>Four kinds of row, kept visibly apart. Your decisions quote your own words where the sources recorded them.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>ID</th><th>What</th><th>Basis (your words where recorded)</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr data-status="fact"><td>Brief</td><td>38% abandonment; 22 min vs sub-10; $5K–$100K, 5–25 years; Plaid, catalog, credit engine, profile and document APIs exist; TypeScript/Node on AWS; no AI may make or imply a credit decision</td><td>The brief, ISSUED; wins every disagreement</td><td><span class="st fact">Fact</span></td></tr>
+      <tr data-status="decision"><td>D-1</td><td>The ChatGPT conversation sets the direction</td><td>"use this conversation that I had with ChatGPT to define the product direction" · 2026-10-28</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-2</td><td>A demo for the interview, not a product; not feature-intensive</td><td>"We don't need a product. This is supposed to be a demo … We won't be feature-intensive" · 2026-10-28</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-3</td><td>Heavy synthetic data so Plaid and the credit engine appear</td><td>"use a lot of synthetic data … That way, we can include stuff like the Plaid integration" · 2026-10-28</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-4</td><td>Finished overnight; deadline 08:00 CT 2026-10-29</td><td>"this needs to be finished overnight" · 2026-10-28; time set 2026-10-29</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-5</td><td>Agentic features where they fit: the application-prep agent</td><td>"if we can incorporate certain agentic features in a timely manner, that'd be best" · 2026-10-28</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-6</td><td>Riverside theme and texture, rebranded GoodLeap</td><td>"use the same texture and theme from our Riverside project … change the branding to GoodLeap" · 2026-10-28</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-7</td><td>General verification, not heavy testing</td><td>"id like to just do general verifcations" · 2026-10-28</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-8</td><td>Stack A: React 19 + Vite + Tailwind 4 frontend, TypeScript/Node backend (the brief's own stack)</td><td>"whatever the briefing asked of us its looks like A" · 2026-10-29 00:13</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-9</td><td>Claude Sonnet 5.5 for all model calls; guardrails are code, no second model</td><td>"yes" · 2026-10-29 00:13</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-10</td><td>Design doc written after the build, from the ChatGPT analysis + brief audit</td><td>Your deadline answer, 2026-10-29</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-11</td><td>Buttons for decisions, AI for ambiguity and documents, code for numbers</td><td>Your critique 2026-10-28 ("just another chatbot…") + ChatGPT's final recommendation</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="proposal"><td>D-12</td><td>Homeowner takes over for sensitive steps; the contractor never sees income data</td><td>ChatGPT turn 5; the brief is silent on the hand-off. Recorded in the PRD as an assumption, not a decision</td><td><span class="st proposal">Assumption</span></td></tr>
+      <tr data-status="decision"><td>D-13</td><td>Plaid failure (not pay-stub extraction) is the friction case</td><td>Plaid exists [B]; its failure path is the likelier gap [C]; under your D-1 direction · recorded as decided</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>D-14</td><td>No RAG or fine-tuning: product terms fit in context</td><td>The brief §3 asks the question; terms are short; recorded as decided, defended in the design doc</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>S-1…S-4, S-6</td><td>Process skips: one combined page; no OpenAPI/Prism; no Stage 6 gate; no tickets (segments + a review each); no error-analysis round</td><td>"yes" to S-1…S-3; "divide it into a major segments for parllelization and a code review for each major segment with proper verification but in a broad way"; "skip" S-6 · 2026-10-29</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="decision"><td>Gates</td><td>No sign-off stops for §1–§4 tonight</td><td>"build through; review the combined page in the morning" · 2026-10-29</td><td><span class="st decision">Your decision</span></td></tr>
+      <tr data-status="proposal"><td>HP-1</td><td>Fixed skeleton, AI at three seams (option B)</td><td>Claude's recommendation; GP-72; your D-5 and D-11 point at it</td><td><span class="st proposal">Proposal</span></td></tr>
+      <tr data-status="proposal"><td>HP-2</td><td>Code guardrail chain now; classifier as v2 on SCR-7</td><td>Claude's recommendation; the phrase list is a known limit</td><td><span class="st proposal">Proposal</span></td></tr>
+      <tr data-status="proposal"><td>HP-4</td><td>Schema extraction; code validates; <code>needs_review</code> / <code>needs_input</code>, never a guess</td><td>Claude's recommendation; R-7 and WP-3</td><td><span class="st proposal">Proposal</span></td></tr>
+      <tr data-status="proposal"><td>UXP-1…3</td><td>Same-device hand-off; top three products; no question history</td><td>Build defaults from UX-1; each one above</td><td><span class="st proposal">Proposal</span></td></tr>
+      <tr data-status="unknown"><td>SDQ-1…5</td><td>Load, peak, failure to survive, spend ceiling, hardest uncertainty for the production design</td><td>Yours to answer before the design doc's §2, §5 and §6; see <a href="#ask-h">Awaiting you</a></td><td><span class="st unknown">Unknown</span></td></tr>
+      <tr data-status="unknown"><td>[A] 1–6</td><td>README assumptions: the company is GoodLeap; homeowner on own device; invented catalog; mocked services; the 22-minute split is unknown; history only where verified</td><td>PRD §12; each one is stated, not hidden</td><td><span class="st unknown">Unknown</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Acceptance: what "done" means at 06:30 CT</h3>
+  <ol class="tight" data-status="fact">
+    <li>Fresh clone → running app in under 5 minutes following the README.</li>
+    <li>SCR-1 shows the top three products for $30,000 by priority, all six on "Show all", with <code>GL-FIX-15</code> at <span class="num">$286.70/mo, $51,605.21</span> total.</li>
+    <li>SCR-2 answers the deferred-interest question with the <span class="num">$11,245.50</span> figure and the disclosures, and redirects "Will I qualify?".</li>
+    <li><code>scripts/guardrail-check.ts</code> blocks all ≈10 crafted outputs.</li>
+    <li>SCR-3 extracts all three estimates; the HVAC one yields <code>needs_input</code> for the total; the agent trace shows ≤ 6 steps.</li>
+    <li>SCR-4 failure path shows the explanation and the document route; success path fills income from <code>plaid</code>.</li>
+    <li>SCR-5 submits and shows the engine's <code>pending</code>/<code>conditional</code>.</li>
+    <li>SCR-6 shows one record per SCR-2/SCR-4 message with raw vs shown text and check results.</li>
+    <li>SCR-7 cites only verified history; every item has friction point, metric, reason.</li>
+    <li>Type check, lint, vitest and the Playwright smoke run pass; screenshots in <code>docs/artifacts/screens/</code>.</li>
+    <li><code>SUBMISSION.md</code> rows P1–P7 ticked with evidence; D1–D7 after the design doc.</li>
+  </ol>
+</section>
+
+<!-- ===================================================== BUILD TONIGHT -->
+<section aria-labelledby="build-h">
+  <h2 id="build-h">What gets built tonight, and by whom</h2>
+  <p class="section-sub">Your shape: "divide it into a major segments for parllelization and a code review for each major segment with proper verification but in a broad way." Foundation runs first and alone; segments A–D run in parallel, each as a planner → implementer pair with a code review; then the orchestrator integrates, runs the broad checks and writes the documents. Source: <a href="../plans/slice-plan.md">slice-plan.md</a> and the <a href="../analysis/2026-10-28-overnight-demo-plan.md">overnight demo plan</a>.</p>
+
+  <figure>
+    <p class="scroll-hint">Diagram: swipe sideways. The text below it says the same thing.</p>
+    <div class="scroll" tabindex="0" aria-label="Build swimlanes, scrolls sideways">
+    <svg viewBox="0 0 1040 404" role="img" aria-labelledby="t8t t8d">
+      <title id="t8t">Build swimlanes: Foundation first, then segments A to D in parallel, then integrate, review, check and document</title>
+      <desc id="t8d">Time runs left to right. Lane Foundation: about 60 minutes, owns the shell, shared types, synthetic data, the LLM client and stubs; done when the shell serves seven empty screens. Then four parallel lanes: A quote and compare, no AI; B ask, guardrails and audit, AI; C application prep agent, income verification and submit, AI and agentic; D the roadmap page with web-verified history, direct lane. Each has a planner, an implementer and a code review. Then one lane: integrate the journey, fix seams, broad checks, README, design doc, this page, SUBMISSION walk. Build done about 06:30 CT, deadline 08:00 CT.</desc>
+      <defs><marker id="ah8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <rect class="lane-build" x="0" y="10" width="1040" height="60" rx="8"/>
+      <rect class="lane-staff" x="0" y="80" width="1040" height="62" rx="8"/>
+      <rect class="lane-assistant" x="0" y="150" width="1040" height="62" rx="8"/>
+      <rect class="lane-assistant" x="0" y="220" width="1040" height="62" rx="8"/>
+      <rect class="lane-family" x="0" y="290" width="1040" height="62" rx="8"/>
+      <text class="lane-label" x="10" y="30">F · FOUNDATION</text>
+      <text class="lane-label" x="10" y="100">A · QUOTE</text>
+      <text class="lane-label" x="10" y="170">B · ASK + GUARD</text>
+      <text class="lane-label" x="10" y="240">C · APPLY + VERIFY</text>
+      <text class="lane-label" x="10" y="310">D · ROADMAP</text>
+      <rect class="node decision" x="130" y="18" width="250" height="44" rx="8"/><text x="140" y="36" class="strong">shell · types · synthetic data · stubs</text><text x="140" y="52" class="small">≈ 60 min · done: 7 empty screens, typecheck, /api/health</text>
+      <path class="arrow" d="M380,40 L400,40 L400,110 L420,110" marker-end="url(#ah8)"/>
+      <path class="arrow" d="M400,40 L400,180 L420,180" marker-end="url(#ah8)"/>
+      <path class="arrow" d="M400,40 L400,250 L420,250" marker-end="url(#ah8)"/>
+      <path class="arrow" d="M400,40 L400,320 L420,320" marker-end="url(#ah8)"/>
+      <rect class="node" x="420" y="88" width="350" height="46" rx="8"/><text x="430" y="106" class="strong">finance maths · /api/quote · Compare screen</text><text x="430" y="122" class="small">planner → implementer (Sonnet) → review · vitest WP-1</text>
+      <rect class="node ai" x="420" y="158" width="350" height="46" rx="8"/><text x="430" y="176" class="strong">question box · guardrails · audit log + screen</text><text x="430" y="192" class="small">guardrail-check.ts (≈10 bad outputs) · 3 live questions</text>
+      <rect class="node ai" x="420" y="228" width="350" height="46" rx="8"/><text x="430" y="246" class="strong">extraction · prep agent · Plaid mocks · submit</text><text x="430" y="262" class="small">≤ 6 agent steps · 3 estimates · both Plaid paths · screenshots</text>
+      <rect class="node" x="420" y="298" width="350" height="46" rx="8"/><text x="430" y="316" class="strong">verify history · roadmap.json · Roadmap screen</text><text x="430" y="332" class="small">direct lane · every claim sourced or labelled</text>
+      <path class="arrow" d="M770,111 L785,111 L785,230 L800,230" marker-end="url(#ah8)"/>
+      <path class="arrow" d="M770,181 L785,181"/><path class="arrow" d="M770,251 L785,251"/><path class="arrow" d="M770,321 L785,321 L785,230"/>
+      <rect class="node awaiting" x="800" y="150" width="228" height="160" rx="8"/>
+      <text x="810" y="172" class="strong">Then: integrate and finish</text>
+      <text x="810" y="192" class="small">1. run the whole journey, fix seams</text>
+      <text x="810" y="208" class="small">2. one code review per segment</text>
+      <text x="810" y="224" class="small">3. typecheck · lint · npm test ·</text>
+      <text x="810" y="240" class="small">    guardrail-check · Playwright smoke</text>
+      <text x="810" y="256" class="small">4. README · design doc · this page ·</text>
+      <text x="810" y="272" class="small">    SUBMISSION.md walk</text>
+      <text x="810" y="294" class="small">5. push to GitLab only when you say so</text>
+      <line class="cut" x1="1034" y1="10" x2="1034" y2="352"/>
+      <text x="10" y="372" class="small">Stub seam: C uses B's guardedGenerate through a template stub until B lands. A renders B's panel in the slot Foundation placed.</text>
+      <text x="10" y="394" class="cut-label">build done ≈ 06:30 CT · deadline 08:00 CT · design doc after the build (D-10)</text>
+    </svg>
+    </div>
+    <figcaption>From the slice plan. Each segment edits only its owned files (the collision map); shared files belong to Foundation.</figcaption>
+    <ol class="words">
+      <li>Foundation (about 60 minutes, sequential): root workspace, the Riverside-based shell rebranded GoodLeap, shared types, the LLM client, synthetic data, stub screens and routes. Done when the shell serves seven empty screens, the type check passes and <code>/api/health</code> is ok.</li>
+      <li>A (no AI): finance maths, <code>/api/quote</code>, the Compare screen; verified by the WP-1 unit tests.</li>
+      <li>B (AI): the question box, the guardrail chain, the audit log and screen; verified by <code>guardrail-check.ts</code> and three live questions.</li>
+      <li>C (AI + agentic): extraction, the prep agent, Plaid and credit-engine mocks, the three application screens; verified on all three estimates and both Plaid paths.</li>
+      <li>D (direct lane): web-verify the historical claims, write <code>roadmap.json</code> and the Roadmap screen.</li>
+      <li>Then integrate, review each segment, run the broad checks, write the README, the design doc, this page and the SUBMISSION walk. Push only when you say so.</li>
+    </ol>
+  </figure>
+
+  <h3>Where the code runs</h3>
+  <figure>
+    <p class="scroll-hint">Diagram: swipe sideways. The text below it says the same thing.</p>
+    <div class="scroll" tabindex="0" aria-label="System map, scrolls sideways">
+    <svg viewBox="0 0 1040 270" role="img" aria-labelledby="t9t t9d">
+      <title id="t9t">System map for the demo: browser, Node server with six modules, the Anthropic API, and canned integrations</title>
+      <desc id="t9d">The browser, React 19 with Vite and Tailwind 4, calls the Node and TypeScript server on Hono over /api. The server has modules finance (pure maths), guardrails (pure checks), assist (the question box), application (extraction and the prep agent), integrations (Plaid, document income, credit engine, contractor profile, all canned JSON) and audit (append-only JSONL). Only llm/client.ts talks to the Anthropic API with claude-sonnet-5-5.</desc>
+      <defs><marker id="ah9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+      <rect class="node" x="10" y="70" width="170" height="70" rx="8"/><text x="20" y="92" class="strong">Browser</text><text x="20" y="110" class="small">React 19 · Vite · Tailwind 4</text><text x="20" y="126" class="small">7 screens, Riverside shell</text>
+      <path class="arrow" d="M180,105 L230,105" marker-end="url(#ah9)"/><text x="186" y="98" class="tiny">/api</text>
+      <rect class="band" x="230" y="10" width="560" height="250" rx="10"/><text class="band-label" x="240" y="30">Node + TypeScript (Hono) · one route module per segment</text>
+      <rect class="node decision" x="245" y="45" width="160" height="40" rx="6"/><text x="253" y="62" class="strong">finance/</text><text x="253" y="77" class="small">pure maths, no I/O · A</text>
+      <rect class="node decision" x="245" y="95" width="160" height="40" rx="6"/><text x="253" y="112" class="strong">guardrails/</text><text x="253" y="127" class="small">checks + disclosures · B</text>
+      <rect class="node ai" x="245" y="145" width="160" height="40" rx="6"/><text x="253" y="162" class="strong">assist/</text><text x="253" y="177" class="small">question box prompt · B</text>
+      <rect class="node ai" x="425" y="45" width="170" height="40" rx="6"/><text x="433" y="62" class="strong">application/</text><text x="433" y="77" class="small">extraction + prep agent · C</text>
+      <rect class="node" x="425" y="95" width="170" height="54" rx="6"/><text x="433" y="112" class="strong">integrations/</text><text x="433" y="127" class="small">Plaid · doc income · engine ·</text><text x="433" y="141" class="small">contractor profile (canned)</text>
+      <rect class="node" x="425" y="159" width="170" height="40" rx="6"/><text x="433" y="176" class="strong">audit/</text><text x="433" y="191" class="small">append-only var/audit.jsonl</text>
+      <rect class="node ai" x="615" y="95" width="160" height="40" rx="6"/><text x="623" y="112" class="strong">llm/client.ts</text><text x="623" y="127" class="small">the one SDK import</text>
+      <path class="arrow" d="M775,115 L830,115" marker-end="url(#ah9)"/>
+      <rect class="node ai" x="830" y="85" width="200" height="60" rx="8"/><text x="840" y="107" class="strong">Anthropic API</text><text x="840" y="125" class="small">claude-sonnet-5-5 (D-9)</text>
+      <text x="245" y="222" class="tiny">Canned JSON stands in for every external system (D-3).</text>
+      <text x="245" y="236" class="tiny">In production the same modules sit behind the portal's backend on ECS;</text>
+      <text x="245" y="250" class="tiny">RDS for audit records, S3 for documents, SQS for extraction jobs [B].</text>
+    </svg>
+    </div>
+    <figcaption>From <a href="../design/architecture.md">architecture.md</a> §1 and §3. Purple modules call the model; blue ones are pure code with their own tests.</figcaption>
+    <ol class="words">
+      <li>The browser calls the Node server over <code>/api</code>.</li>
+      <li><code>finance/</code> and <code>guardrails/</code> are pure code. <code>assist/</code> and <code>application/</code> call the model through <code>llm/client.ts</code>, the only file that imports the SDK.</li>
+      <li><code>integrations/</code> is canned JSON for Plaid, document income, the credit engine and the contractor profile. <code>audit/</code> appends JSON lines.</li>
+      <li>One SCR-2 request: prompt build ≈ 2–4 s, three checks ≈ 5 ms, audit ≈ 1 ms; a regeneration adds 2–4 s. Target p95 ≤ 5 s [A], shown as a timer on screen.</li>
+    </ol>
+  </figure>
+
+  <h3>The verification set (D-7: "general verifications")</h3>
+  <div class="days" data-status="decision">
+    <div class="day"><h3>Fast gates</h3><ul><li>Type check</li><li>Lint</li></ul></div>
+    <div class="day"><h3>Payment maths</h3><ul><li>vitest worked pairs: fixed, 0% intro, deferred interest (WP-1)</li></ul></div>
+    <div class="day"><h3>Guardrails</h3><ul><li><code>scripts/guardrail-check.ts</code>: ≈10 crafted bad outputs, all blocked, pass/fail table</li></ul></div>
+    <div class="day"><h3>End to end</h3><ul><li>One Playwright run: happy path + Plaid-failure path, screenshots to <code>docs/artifacts/screens/</code></li></ul></div>
+    <div class="day"><h3>Review</h3><ul><li>One <code>code-review-agent</code> (Sonnet) per segment: brief conformance, no model-made numbers or decisions, secrets</li></ul></div>
+  </div>
+  <p class="section-sub" style="margin-top:var(--space-3)">Not run tonight, by your decision: no frozen-test step, no per-ticket review loop, no eval suite, no error-analysis round (S-6).</p>
+</section>
+
+<!-- ===================================================== AWAITING YOU -->
+<section aria-labelledby="ask-h">
+  <div class="ask" data-status="awaiting">
+    <h2 id="ask-h">Awaiting you</h2>
+    <p><span class="st awaiting">Awaiting approval</span> Everything below is a proposal, an assumption or an open question. None of it blocks tonight's build; the build follows the recommendations. Each item says why you are being asked and what your answer changes. React to any of them and the affected segment is reworked.</p>
+
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Item</th><th>What is proposed or assumed</th><th>Why you're being asked, and what it changes</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#hp1-h">HP-1</a></td><td>Fixed skeleton; the model at three seams (SCR-2, SCR-3, SCR-4); agent ≤ 6 steps</td><td>It sets where AI is and isn't on every screen. A: agent-driven flow, rework the shell. C: no generated text, weaker interview answer.</td></tr>
+        <tr><td><a href="#hp2-h">HP-2</a></td><td>Code guardrail chain now; a second-model classifier named as v2 on SCR-7</td><td>Enough for the demo, or add the classifier tonight? Adding it costs a call per answer and latency against the 5-second target.</td></tr>
+        <tr><td><a href="#hp4-h">HP-4</a></td><td>Schema extraction; code validates; <code>needs_review</code> / <code>needs_input</code>; never a guess</td><td>Keep, or move the thresholds. Looser breaks "never guess"; stricter makes prefill look useless.</td></tr>
+        <tr><td><a href="#s4-decisions">D-12</a></td><td>Assumption: the homeowner takes over for SCR-4/5; the contractor never sees income data</td><td>The brief is silent on the hand-off. If the contractor stays at the keys, R-12 and the permissions table change, and so does the "Hand to homeowner" boundary.</td></tr>
+        <tr><td>UXP-1</td><td>Same device, with a visible "Hand to homeowner" step boundary</td><td>A share link is more realistic but adds auth and a second device tonight.</td></tr>
+        <tr><td>UXP-2</td><td>Top three products large; "Show all 6" expands</td><td>All six at once changes SCR-1's layout and the phone layout.</td></tr>
+        <tr><td>UXP-3</td><td>No question history across products; context resets; prior Q&amp;A visible in the audit</td><td>History changes R-4's context rule and segment B's prompt.</td></tr>
+        <tr><td>SDQ-1…5</td><td>Five production design-doc questions, each with a recommendation beside it (cards below)</td><td>The demo needs none of them. The design doc's §2, §5 and §6 need your answers before they can be sized; until then they describe what would be measured, not numbers.</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 style="margin-top:var(--space-4)">SDQ-1…5: the production questions the design doc still owes</h3>
+    <p>The brief asks for a 2–3 page design doc with a rollout plan and monitoring. Those sections need numbers only you can give: how big, how many at once, what must survive, what it may cost, and what you least trust. Per <code>system-design-questioning.md</code> these are yours, not defaults. Each card gives a recommendation to put beside your answer.</p>
+
+    <div class="grid two">
+      <article class="ask-card" data-status="decision" data-ask="SDQ-1">
+        <h3>SDQ-1 · What load is the design written for? <span class="st decision">Answered 2026-10-29 · SD-3.1</span></h3>
+        <div class="part" data-part="context"><h4>Where it comes up</h4><p>Design doc §5 rollout and §2 architecture. The lender has 15,000+ contractor partners; the demo serves one kitchen at a time.</p></div>
+        <div class="part" data-part="problem"><h4>The problem</h4><p>How many contractor sessions a day is the production design written for, and what larger load needs a written path rather than a built one?</p></div>
+        <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>The brief gives totals ($2B a year, 15,000 partners) but no daily session count; sizing from a guess would be the "invented number" the metrics rule forbids.</p></div>
+        <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>Your number sizes the ECS and model-cost sections. Recommendation beside it: pilot of 50 contractors, with a written path to all 15,000.</p></div>
+        <div class="part" data-part="decision"><h4>Your answer</h4><p>"Yes" to the recommendation: a 50-contractor pilot with a written path to all 15,000 (PRD D-15). Design doc §5 now says so.</p></div>
+      </article>
+      <article class="ask-card" data-status="unknown" data-ask="SDQ-2">
+        <h3>SDQ-2 · Peak concurrency <span class="st unknown">Unknown · SD-3.4</span></h3>
+        <div class="part" data-part="context"><h4>Where it comes up</h4><p>Design doc §2 and §6. Contractors sell on weekends; many question-box calls could land in the same minute on a Saturday morning.</p></div>
+        <div class="part" data-part="problem"><h4>The problem</h4><p>How many SCR-2 question calls at the same moment must the production system answer within the 5-second target?</p></div>
+        <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>Each answer is a 2–4 second model call plus a possible regeneration; peak decides rate limits, queueing and whether the 5-second target holds under load.</p></div>
+        <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>It sets the model-call budget and the queue design in §2. Recommendation: size from SDQ-1 times a stated peak factor, named as such.</p></div>
+      </article>
+      <article class="ask-card" data-status="unknown" data-ask="SDQ-3">
+        <h3>SDQ-3 · What failure must production survive? <span class="st unknown">Unknown · SD-7.2</span></h3>
+        <div class="part" data-part="context"><h4>Where it comes up</h4><p>Design doc §2 and §4. The Head of Compliance needs every borrower message auditable; a lost audit record is a compliance failure, not a bug.</p></div>
+        <div class="part" data-part="problem"><h4>The problem</h4><p>Which failure is the design written to survive: one availability zone, a region, a model-provider outage?</p></div>
+        <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>Each level costs more, and the brief says the team is small ("Don't give me a science project"). The audit store is the one piece that may never lose a record.</p></div>
+        <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>It decides the RDS and S3 setup and the provider-outage behaviour (safe template vs refuse). Recommendation: one AZ; the audit store must never lose a record.</p></div>
+      </article>
+      <article class="ask-card" data-status="unknown" data-ask="SDQ-4">
+        <h3>SDQ-4 · Spend ceiling <span class="st unknown">Unknown · SD-1.6</span></h3>
+        <div class="part" data-part="context"><h4>Where it comes up</h4><p>Design doc §2 model choice and §5 rollout. Every application makes a few model calls: one or two questions, one extraction, maybe one explanation.</p></div>
+        <div class="part" data-part="problem"><h4>The problem</h4><p>What may model calls and hosting cost per application, and in total, before the design must change?</p></div>
+        <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>The value is $200M of volume, not revenue. Margin per loan is unknown. A ceiling anchored to a guess cannot be defended in the interview.</p></div>
+        <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>It decides whether a second-model classifier (HP-2 v2) is affordable and how aggressively to cache. Recommendation: state a per-application model cost cap.</p></div>
+      </article>
+      <article class="ask-card" data-status="unknown" data-ask="SDQ-5">
+        <h3>SDQ-5 · The hardest uncertainty <span class="st unknown">Unknown · SD-1.9</span></h3>
+        <div class="part" data-part="context"><h4>Where it comes up</h4><p>Design doc §3 AI decisions and §6 monitoring, and the v1 → v2 feedback loop the brief asks about.</p></div>
+        <div class="part" data-part="problem"><h4>The problem</h4><p>Which do you trust least: that the question box lifts comprehension, or that the guardrail catches subtle implied-approval wording?</p></div>
+        <div class="part" data-part="why-hard"><h4>Why it's hard</h4><p>Neither can be measured in a demo. The first needs a pilot with real homeowners; the second needs a labelled sample of real answers.</p></div>
+        <div class="part" data-part="why-asked"><h4>Why we ask, what changes</h4><p>It decides what v2 is built around and what the monitoring samples first. Recommendation: guardrail recall; propose the classifier plus a sampling review in v2.</p></div>
+      </article>
+    </div>
+
+    <h3 style="margin-top:var(--space-4)">The approval request</h3>
+    <p><strong>You are asked to</strong> read the four stages on this page and tell us, in one message, (1) whether the framing in Stage 1 and the PRD scope stand, (2) which of HP-1, HP-2, HP-4 and the UXP-1…3 defaults you keep or overturn, (3) whether D-12 stays an assumption or becomes your decision, and (4) your answers to SDQ-1…5, or that the recommendations beside them stand for the design doc.</p>
+    <p><strong>Saying yes would mean:</strong> the Stage 1–4 gates are ticked with your date, the build continues unchanged, and the design doc's production sections use your SDQ answers. <strong>It would not</strong> mean the code is reviewed, the submission is ready, or the GitHub mirror and the push to GitLab are authorised; those are separate asks. Not yet approved.</p>
+  </div>
+</section>
+
+</main>
+<footer class="wrap">Local file, not published. The Markdown sources are the source of truth; this page is a synthesis built after them. If a source changes, the page is rebuilt, re-stamped with <code>stamp_review_page.py</code> and checked with the zero-to-hero <code>check_review_page.py</code> before any sign-off. The brief is confidential and is quoted here in short phrases only.</footer>
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('themeToggle');
+  if(!btn)return;
+  var order=['system','light','dark'],cur='system';
+  var preset=root.getAttribute('data-theme');if(preset&&order.indexOf(preset)>-1)cur=preset;
+  try{var s=localStorage.getItem('gl-review-theme');if(s&&order.indexOf(s)>-1)cur=s;}catch(e){}
+  function apply(){
+    if(cur==='system'){root.removeAttribute('data-theme');}else{root.setAttribute('data-theme',cur);}
+    btn.textContent='Theme: '+cur;btn.setAttribute('aria-pressed',cur!=='system'?'true':'false');
+  }
+  apply();
+  btn.addEventListener('click',function(){
+    cur=order[(order.indexOf(cur)+1)%order.length];
+    try{localStorage.setItem('gl-review-theme',cur);}catch(e){}
+    apply();
+  });
+})();
+</script>
+</body>
+</html>

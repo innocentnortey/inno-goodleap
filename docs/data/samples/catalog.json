@@ -1,0 +1,59 @@
+{
+  "synthetic": true,
+  "description": "Invented loan product catalog for the GoodLeap demo. APRs and promo mechanics are illustrative, not any lender's real terms.",
+  "catalogVersion": "2026-10-29",
+  "amountRange": { "min": 5000, "max": 100000 },
+  "products": [
+    {
+      "id": "GL-FIX-05",
+      "name": "Fixed 5-year",
+      "kind": "fixed",
+      "aprPct": 6.99,
+      "termMonths": 60,
+      "terms": "Fixed APR of 6.99% for 60 months. Equal monthly payments of principal and interest. No prepayment penalty. No origination fee in this demo."
+    },
+    {
+      "id": "GL-FIX-10",
+      "name": "Fixed 10-year",
+      "kind": "fixed",
+      "aprPct": 7.49,
+      "termMonths": 120,
+      "terms": "Fixed APR of 7.49% for 120 months. Equal monthly payments of principal and interest. No prepayment penalty."
+    },
+    {
+      "id": "GL-FIX-15",
+      "name": "Fixed 15-year",
+      "kind": "fixed",
+      "aprPct": 8.0,
+      "termMonths": 180,
+      "terms": "Fixed APR of 8.00% for 180 months. Equal monthly payments of principal and interest. No prepayment penalty. Paying extra toward principal shortens the term and reduces total interest."
+    },
+    {
+      "id": "GL-FIX-25",
+      "name": "Fixed 25-year",
+      "kind": "fixed",
+      "aprPct": 9.49,
+      "termMonths": 300,
+      "terms": "Fixed APR of 9.49% for 300 months. Lowest monthly payment of the fixed products; highest total interest. No prepayment penalty."
+    },
+    {
+      "id": "GL-INTRO-0",
+      "name": "0% intro, 10-year",
+      "kind": "intro",
+      "introMonths": 12,
+      "introAprPct": 0,
+      "aprPct": 9.99,
+      "termMonths": 120,
+      "terms": "0% APR for the first 12 months; payments during the intro period are principal only (loan amount divided by 120). From month 13 the remaining balance accrues interest at 9.99% APR and is repaid in equal payments over the remaining 108 months. No prepayment penalty. The intro rate is not deferred interest: no interest is charged retroactively."
+    },
+    {
+      "id": "GL-DEF-18",
+      "name": "Deferred interest, 18-month promo",
+      "kind": "deferred",
+      "promoMonths": 18,
+      "aprPct": 24.99,
+      "termMonths": 84,
+      "terms": "No interest if the full balance is paid within 18 months. If any balance remains after month 18, interest at 24.99% APR is charged from the original purchase date on the full original balance, and the remaining balance is repaid over the rest of an 84-month term. Minimum monthly payments during the promo are set to pay the balance off in 18 months. No prepayment penalty."
+    }
+  ]
+}
