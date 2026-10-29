@@ -153,3 +153,7 @@
   (peak concurrency, failure to survive, spend ceiling) stay open and the doc says so.
 - **Commit and push:** "commit and push". GitLab `origin` only; the GitHub mirror still needs his explicit yes
   (`project-provenance`).
+- **Pushed:** GitLab visibility re-checked `private`; the working tree swept (no confidential source, key, `.env`,
+  `var/` or `node_modules` tracked); five commits built on GitLab's `6985087` (scaffold, planning, server, web, docs);
+  a clean clone of the committed tree passed type check, lint, 103/103 tests and the guardrail script; pushed
+  `6985087..dc118f7` to `origin/main` as a fast-forward.

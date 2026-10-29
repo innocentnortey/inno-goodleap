@@ -13,10 +13,10 @@
 **Build done (VPS, 2026-10-29 01:46 CT).** All segments built and reviewed; every check green (log:
 `docs/devlog/2026-10-29-overnight-build-vps1.md`; status: `PROJECT-CHECKLIST.md` §8, `SUBMISSION.md`). Design doc
 `docs/design-doc.md` (3-page PDF beside it). Dev servers run with `../bin/with-provider-env -- npm run dev`
-(API 8787, web 5173). Nothing is committed.
+(API 8787, web 5173). Committed and pushed to GitLab `origin` `main` (2026-10-29, five commits on `6985087`).
 
 **Still open for Innocent.** (1) Review the combined page and the build decisions in the dev log (INTRO-0 ranking,
-rounding rule). (2) SDQ-1…4 sizing answers for design doc §5. (3) Commit and push to GitLab `origin`; GitHub mirror
-for the submission.
+rounding rule). (2) SDQ-2…4 (peak concurrency, failure to survive, spend ceiling); SDQ-1 decided (D-15). (3) A GitHub
+mirror for the submission needs his explicit yes.
 
-**Next action.** Innocent's morning review; then commit, push and submit.
+**Next action.** Innocent's review; the GitHub mirror decision; submit.
