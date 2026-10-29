@@ -1,0 +1,30 @@
+# Confidential partner sources (brief is marked Confidential). The register docs/source/README.md stays tracked.
+docs/source/originals/
+docs/source/01-goodleap-brief.md
+docs/source/03-chatgpt-business-friction-analysis.md
+docs/source/04-chatgpt-product-direction.md
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# OS and editor
+.DS_Store
+.vscode/
+.idea/
+
+# Common build output (stack not chosen yet)
+node_modules/
+dist/
+build/
+.next/
+__pycache__/
+.venv/
+*.pyc
+coverage/
+
+# Runtime output (audit log, smoke-run scratch)
+var/
+*.tsbuildinfo
+test-results/
