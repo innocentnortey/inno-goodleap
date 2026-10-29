@@ -64,6 +64,7 @@ fast-forwarded into GitLab `main` (2026-10-22) so the mirror, not a hand push, c
 
 | Project | Host | Note |
 |---|---|---|
+| GoodLeap (`inno-goodleap`) | Render (created 2026-10-29) | `srv-dbhfkbpsrm7s73fni49g`, Ohio Starter + 1 GB disk at `/data`; additional $7.25/month approved by Innocent on 2026-10-29. Dedicated environment group `inno-goodleap-production`. |
 | HouseAccount (`inno-houseaccount`) | Render (moved 2026-10-21) | `srv-dbco0u3rjlhs73e4qalg`, Render Postgres, 5 GB disk at `/data`. Its `RAILWAY_PUBLIC_DOMAIN` variable is intentional: the app reads that name to allow its MCP host. |
 | Riverside Onboarding (`inno-riverside-onboarding`) | Removed 2026-10-25 | Was on Render 2026-10-21 → 2026-10-25 (`srv-dbcnucbrjlhs73e4hss0` + its Postgres); both deleted at Innocent's instruction once the project was done. Fresh synthetic seed only, nothing restored. |
 | AEA call center (`inno-aea-callcenter`) | Render (moved 2026-10-22) | `srv-dbcogjjrjlhs73e68vhg`, SQLite on a 1 GB disk at `/data`; the issued dataset in the image stays read-only. |

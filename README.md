@@ -50,6 +50,8 @@ npm run smoke               # Playwright: happy path and bank-failure path, scre
 
 ## Deployment
 
+Live demo: <https://inno-goodleap.onrender.com>.
+
 The production container serves the built frontend and `/api` together. Render configuration and the
 GitLab → GitHub deployment flow are documented in [`docs/deployment.md`](docs/deployment.md).
 

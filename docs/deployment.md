@@ -16,8 +16,7 @@ Requested by Innocent on 2026-10-29. Render follows the project's Gauntlet hosti
   the hosted demo starts a separate audit log. In-memory applications reset when the process restarts.
 - Runtime: Node 24, unprivileged `node` user, production dependencies only. Confidential documents and local credentials
   are excluded from the Docker build context and image. Financial integrations remain synthetic demo fixtures.
-- Expected additional hosting: $7/month instance + $0.25/month disk, excluding usage and model calls. Paid creation
-  awaits confirmation under the repository's hosting spend rule.
+- Approved additional hosting (Innocent, 2026-10-29): $7/month instance + $0.25/month disk, excluding usage and model calls.
 
 ## Release and verification
 
@@ -36,4 +35,12 @@ Mac and VPS copies reconciled. Container build, 113 tests, typecheck, lint, guar
 and the 12-step real-model production smoke run pass. All three smoke audit records survived a container restart.
 Production dependency audit reports zero known vulnerabilities; the development-only Vitest dependencies retain
 three advisories and are excluded from the runtime image. The compare-screen screenshot was visually checked.
-Render service creation awaits the incremental hosting cost confirmation. No service has been created yet.
+Render service created after Innocent approved the additional spend on 2026-10-29.
+Service `srv-dbhfkbpsrm7s73fni49g`; environment group `evg-dbhfkbm7bikc73egtmg0`; disk `dsk-dbhfkbpsrm7s73fni4qg`.
+Public endpoint: <https://inno-goodleap.onrender.com>.
+Dashboard: <https://dashboard.render.com/web/srv-dbhfkbpsrm7s73fni49g>.
+
+The public deployment passed all 12 real-model browser checks with no console errors. The homepage, JavaScript
+and CSS return 200; secrets, source documents and unknown API routes return 404. Health confirms the model key
+is configured and reports the deployed source commit. All five hosted audit records survived a Render restart
+byte-for-byte, and health returned with the key still configured.

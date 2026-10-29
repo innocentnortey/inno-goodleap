@@ -7,6 +7,8 @@ evidence).
 **Due:** 08:00 CT 2026-10-29 (Innocent, PRD D-4). **Format:** "a single GitHub repository or zip file" (repo
 preferred; commit history is "a useful (and positive) signal").
 
+**Hosted demo:** <https://inno-goodleap.onrender.com> — real-model browser checks pass; financial services remain synthetic.
+
 ## Part 1 — Solution design document (2–3 pages, in `/docs`, PDF or Markdown)
 
 | # | Brief asks for | Evidence | Status |
