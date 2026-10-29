@@ -29,6 +29,9 @@ Open <http://127.0.0.1:5173>.
 | `LLM_MODEL` | no | Defaults to `claude-sonnet-5-5`. |
 | `API_PORT` | no | API port, default `8787`. The web dev server proxies `/api` to it. |
 | `WEB_PORT` | no | Web port, default `5173`. |
+| `NODE_ENV` | no | Set to `production` to serve the built web app and bind to `0.0.0.0`. |
+| `PORT` | no | Hosting port; takes precedence over `API_PORT`. Render supplies this. |
+| `AUDIT_PATH` | no | Audit log file; default `var/audit.jsonl`. Render uses `/data/audit.jsonl` on a persistent disk. |
 
 Plaid, Plaid Document Income, the credit decision engine and the contractor profile service are mocked with canned
 JSON in `data/synthetic/`. No other keys are needed.
@@ -44,6 +47,21 @@ npm run smoke               # Playwright: happy path and bank-failure path, scre
 ```
 
 `npm run smoke` expects `npm run dev` to be running and calls the real model.
+
+## Deployment
+
+The production container serves the built frontend and `/api` together. Render configuration and the
+GitLab → GitHub deployment flow are documented in [`docs/deployment.md`](docs/deployment.md).
+
+```bash
+npm ci
+npm run build
+NODE_ENV=production PORT=10000 npm start
+```
+
+Open <http://localhost:10000>. For Docker, build with `docker build -t inno-goodleap .` and run with
+`docker run --rm -p 10000:10000 -e PORT=10000 -e ANTHROPIC_API_KEY -e AUDIT_PATH=/data/audit.jsonl -v goodleap-audit:/data inno-goodleap`.
+Export `ANTHROPIC_API_KEY` in your shell first; credentials are passed only at runtime.
 
 ## Architecture
 

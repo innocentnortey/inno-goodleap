@@ -11,8 +11,11 @@ Project-wide. Applies to every task that adds a remote, commits or pushes.
   `Initial commit` `6985087` (`README.md`); the first push must build on it (fetch, then rebase or merge), never force.
 - **Not public** (unauthenticated API returned 404, 2026-10-28). Re-check before the first push: the brief is
   confidential, and two earlier projects were public on creation (YourAI, Newsela).
-- **GitHub is not approved yet.** The brief prefers "a single GitHub repository" for the submission. A GitHub
-  mirror of GitLab (as Cerbo had) needs Innocent's explicit yes; never add a GitHub `origin`.
+- **GitHub mirror approved 2026-10-29** (Innocent gave `github.com/innocentnortey/inno-goodleap.git`, ~02:20 CT). The
+  GitHub repo is **public** and mirrors GitLab `main` (same history, `5994f0d` on 2026-10-29). It is the submission
+  URL the brief prefers. Never add it as `origin` and never commit to it directly: GitLab is the source of truth and
+  the mirror carries changes out (`gauntlet-hosting-default`, *Deployment flow*). Confidential sources stay
+  git-ignored, so they are absent from the public tree (checked 2026-10-29: only `docs/source/README.md` is tracked).
 - **Commit and push only when Innocent asks**, except in factory mode (published tickets running through the build
   loop), which has standing authorization to push to `origin`.
 - **Confidential sources stay out of git.** `docs/source/` verbatim copies and `originals/` are git-ignored; the

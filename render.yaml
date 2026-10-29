@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: inno-goodleap
+    runtime: docker
+    repo: https://github.com/innocentnortey/inno-goodleap
+    branch: main
+    region: ohio
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    autoDeployTrigger: commit
+    healthCheckPath: /api/health
+    disk:
+      name: audit
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - fromGroup: inno-goodleap-production
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      - key: AUDIT_PATH
+        value: /data/audit.jsonl
+      - key: LLM_MODEL
+        value: claude-sonnet-5-5

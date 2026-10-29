@@ -1,22 +1,18 @@
 # Resume note — inno-goodleap
 
-*Hand-written handoff; rewrite it at each handoff. Status owners: [PROJECT-CHECKLIST.md](../../PROJECT-CHECKLIST.md),
-[ICM checklist](icm-progress.md).*
+**Phase.** Prototype built; Innocent requested VPS synchronization and Render deployment on 2026-10-29.
+Mac and `claude-vultr:/home/linuxuser/workspaces/inno-goodleap` are reconciled. GitLab `origin/main` is canonical;
+the approved public GitHub push mirror is live. Confidential source files remain ignored.
 
-**Phase.** Stages 1–4 artifacts written 2026-10-29 ~01:30 CT (PRD v1.0, framing, data + WP-1…4, HP-1…4, stories, flows, screens, architecture note, combined review page); gates stay unticked until Innocent's morning review; Innocent approved building straight through to the 08:00 CT
-2026-10-29 deadline (skips recorded in the checklist). **The build runs on the VPS**
-(`claude-vultr:/home/linuxuser/workspaces/inno-goodleap`); the Mac copy is a snapshot from about 00:30 CT 2026-10-29.
+**Deployment.** Production Docker image builds and runs on the VPS, with the built frontend and API on one port,
+non-root runtime, production dependencies, and persistent audit storage. Full checks pass (113 tests), real-model
+smoke passes all 12 steps, and audit records survive restart. Configuration and release steps:
+[deployment](../../docs/deployment.md); verification record: [deployment log](../../docs/devlog/2026-10-29-render-deployment-codex1.md).
 
-**Read next.** [PRD](../../docs/prd/goodleap-prd.md) → [Handoff](../../docs/plans/HANDOFF-VPS-BUILD.md) → [overnight plan](../../docs/analysis/2026-10-28-overnight-demo-plan.md)
-→ [slice plan](../../docs/plans/slice-plan.md).
+**Next action.** Await Innocent's confirmation of the additional $7.25/month hosting (Starter + 1 GB disk), then
+create `inno-goodleap` in Render's Ohio workspace, link its dedicated provider-key environment group, deploy the
+mirrored commit, and verify the public URL. No paid Render service has been created yet.
 
-**Build done (VPS, 2026-10-29 01:46 CT).** All segments built and reviewed; every check green (log:
-`docs/devlog/2026-10-29-overnight-build-vps1.md`; status: `PROJECT-CHECKLIST.md` §8, `SUBMISSION.md`). Design doc
-`docs/design-doc.md` (3-page PDF beside it). Dev servers run with `../bin/with-provider-env -- npm run dev`
-(API 8787, web 5173). Committed and pushed to GitLab `origin` `main` (2026-10-29, five commits on `6985087`).
-
-**Still open for Innocent.** (1) Review the combined page and the build decisions in the dev log (INTRO-0 ranking,
-rounding rule). (2) SDQ-2…4 (peak concurrency, failure to survive, spend ceiling); SDQ-1 decided (D-15). (3) A GitHub
-mirror for the submission needs his explicit yes.
-
-**Next action.** Innocent's review; the GitHub mirror decision; submit.
+**Other open items.** Innocent's review of the combined review page and the overnight build decisions (INTRO-0
+ranking and rounding); SDQ-2…4 (peak concurrency, failure to survive, production spend ceiling). Submission status
+and stage gates live in [SUBMISSION.md](../../SUBMISSION.md) and [PROJECT-CHECKLIST.md](../../PROJECT-CHECKLIST.md).

@@ -12,6 +12,7 @@
     "@goodleap/shared": "*",
     "@hono/node-server": "^2.1.5",
     "hono": "^4.13.14",
-    "zod": "^4.1.0"
+    "zod": "^4.1.0",
+    "tsx": "^4.20.0"
   }
 }

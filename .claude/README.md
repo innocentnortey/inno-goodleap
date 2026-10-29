@@ -25,7 +25,7 @@ Maps a request to what it should read and where its output goes. Rows link; owne
 | Read what is being built | [PRD](../docs/prd/goodleap-prd.md), [worked pairs](../docs/data/worked-pairs.md), [hard problems](../docs/design/hard-problems.md), [flows](../docs/ux/01-planning/USER_FLOWS.md), [screens](../docs/ux/03-structure/SCREEN_SPECS.md), [architecture](../docs/design/architecture.md) | — | — |
 | Build the overnight demo (segments F, A–D) | [handoff](../docs/plans/HANDOFF-VPS-BUILD.md), [slice plan](../docs/plans/slice-plan.md), [brief-conformance](rules/brief-conformance.md) | `apps/` (web, server), `packages/shared/`, `data/synthetic/`, `scripts/` | `npm run typecheck`, `lint`, `test`, `guardrail-check`, `smoke` pass |
 | Tickets and build (Stages 7–8) | [ticket-lanes](rules/ticket-lanes.md), [build-loop-test-scope](rules/build-loop-test-scope.md), [code-design-solid-modularity](rules/code-design-solid-modularity.md) | `docs/plans/` | Per the checklist |
-| Hosting (only if a deployed demo is wanted) | [gauntlet-hosting-default](rules/gauntlet-hosting-default.md) | — | The brief asks only for a local run |
+| Deploy and operate the demo | [gauntlet-hosting-default](rules/gauntlet-hosting-default.md), [deployment](../docs/deployment.md) | `Dockerfile`, `render.yaml`, `apps/server/src/app.ts`, `hosting.ts` | Full checks and production smoke pass; live Render release verified |
 | Log a meaningful outcome | [dev log index](../docs/devlog/README.md) | `docs/devlog/YYYY-MM-DD-<topic>-<run-id>.md` | Changed / Why / Checked / Remaining written |
 
 **Unmapped or ambiguous task:** read the brief and the checklist's current gate, ask Innocent if the meaning is a
