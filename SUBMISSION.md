@@ -9,6 +9,10 @@ preferred; commit history is "a useful (and positive) signal").
 
 **Hosted demo:** <https://inno-goodleap.onrender.com> — real-model browser checks pass; financial services remain synthetic.
 
+**Reviewer handoff:** [`docs/reviewer/README.md`](docs/reviewer/README.md) and
+[`docs/artifacts/goodleap-reviewer-kit.zip`](docs/artifacts/goodleap-reviewer-kit.zip) (three uploadable text estimates,
+fictional homeowner details and walkthroughs; no pay-stub upload required).
+
 ## Part 1 — Solution design document (2–3 pages, in `/docs`, PDF or Markdown)
 
 | # | Brief asks for | Evidence | Status |

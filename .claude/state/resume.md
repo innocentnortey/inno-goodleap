@@ -15,7 +15,13 @@ Innocent approved the additional $7.25/month on 2026-10-29. The dedicated enviro
 GitLab push mirror → GitHub main → Render auto-deploy is enabled. Operational details live in
 [deployment](../../docs/deployment.md).
 
-**Next action.** Deployment is complete. Innocent can review the public demo and submit the GitHub repository.
+**Reviewer handoff.** The reviewer kit is included in the repository: [guide](../../docs/reviewer/README.md) and
+[ZIP](../../docs/artifacts/goodleap-reviewer-kit.zip). It includes the three canonical `.txt` estimate fixtures,
+fictional homeowner details and both demo walkthroughs. All three actual file uploads were verified against the
+live application. The pay-stub step is a built-in simulation and requires no supplied document.
+
+**Next action.** Share the public demo and [reviewer guide](https://github.com/innocentnortey/inno-goodleap/blob/main/docs/reviewer/README.md),
+which links to the downloadable sample kit; submit the GitHub repository.
 
 **Other open items.** Innocent's review of the combined review page and the overnight build decisions (INTRO-0
 ranking and rounding); SDQ-2…4 (peak concurrency, failure to survive, production spend ceiling). Submission status

@@ -52,6 +52,9 @@ npm run smoke               # Playwright: happy path and bank-failure path, scre
 
 Live demo: <https://inno-goodleap.onrender.com>.
 
+For review instructions and uploadable sample estimates, see the [reviewer guide](docs/reviewer/README.md)
+and [reviewer kit ZIP](docs/artifacts/goodleap-reviewer-kit.zip). The pay-stub step uses a built-in simulation.
+
 The production container serves the built frontend and `/api` together. Render configuration and the
 GitLab → GitHub deployment flow are documented in [`docs/deployment.md`](docs/deployment.md).
 
