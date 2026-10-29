@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "description": "Canned document-income result for the pay-stub path (mocked Plaid Document Income). Values are invented.",
+  "document": "paystub_2026-10-16.pdf",
+  "extracted": { "employer": "Austin ISD", "payPeriodStart": "2026-10-01", "payPeriodEnd": "2026-10-15", "payFrequency": "biweekly", "grossPay": 2650.00, "ytdGross": 55650.00 },
+  "confidence": 0.93,
+  "fraudRisk": "low",
+  "note": "annualizedGross is computed by code, never by the model: biweekly gross × 26 = 68,900.00"
+}

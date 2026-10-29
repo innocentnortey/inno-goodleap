@@ -1,0 +1,243 @@
+{
+  "synthetic": true,
+  "description": "Content for SCR-7 (Where we'd take it next), written by segment D on 2026-10-29. Baseline lines come from public sources read that day (docs/research/2026-10-29-historical-baseline.md); anything unconfirmed is labelled an assumption. No metric target is given unless the brief states it.",
+  "baseline": [
+    {
+      "claim": "In 2026, GoodLeap financing was offered inside contractor field software: estimates showed an estimated monthly payment on the selected plan, and the customer chose from the plans the contractor added.",
+      "source": {
+        "label": "ServiceTitan help: Use GoodLeap financing in the Field Mobile App (page dated 2026-10-28)",
+        "url": "https://help.servicetitan.com/docs/use-goodleap-financing-in-fma",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "The application could be completed on the spot or sent to the customer by email, and returned a status of approved, conditionally approved, counter offer, declined or pending.",
+      "source": {
+        "label": "ServiceTitan help: Use GoodLeap financing in the Field Mobile App",
+        "url": "https://help.servicetitan.com/docs/use-goodleap-financing-in-fma",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "After a decision, contractors uploaded conditions, the signed contract and project information through a tasks list, so document exceptions were part of the existing flow.",
+      "source": {
+        "label": "ServiceTitan help: Use GoodLeap financing in the Field Mobile App",
+        "url": "https://help.servicetitan.com/docs/use-goodleap-financing-in-fma",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "ServiceTitan says its GoodLeap integration was discontinued as of April 2026; existing users may continue through December 31, 2026.",
+      "source": {
+        "label": "ServiceTitan help: discontinuation notice on the Field Mobile App page",
+        "url": "https://help.servicetitan.com/docs/use-goodleap-financing-in-fma",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "GoodLeap publishes GoodLeap Pros, a contractor sales app for comparing offers on the go and running the sales process from a phone.",
+      "source": {
+        "label": "Apple App Store: GoodLeap Pros (seller GoodLeap, LLC)",
+        "url": "https://apps.apple.com/us/app/id1494023388",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "Contractors can share a GoodLeap application link by text, email or their website, so homeowners can apply on their own device.",
+      "source": {
+        "label": "Roofr help: How to offer GoodLeap financing on your Roofr proposals (dated 2026-07-13)",
+        "url": "https://help.roofr.com/en/articles/15590005-how-to-offer-goodleap-financing-on-your-roofr-proposals",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "GoodLeap has an \"origin system\" where partner accounts are given permission to create application links; public pages do not describe it further.",
+      "source": {
+        "label": "Roofr help (same page); Origin is named, not described",
+        "url": "https://help.roofr.com/en/articles/15590005-how-to-offer-goodleap-financing-on-your-roofr-proposals",
+        "read": "2026-10-29",
+        "status": "partly_verified"
+      }
+    },
+    {
+      "claim": "GoodLeap runs a developer portal for partner API access; its contents were not readable, so which APIs it offers is not confirmed.",
+      "source": {
+        "label": "GoodLeap Developer Portal (title only loaded)",
+        "url": "https://developer.goodleap.com",
+        "read": "2026-10-29",
+        "status": "partly_verified"
+      }
+    },
+    {
+      "claim": "Plaid offers bank, payroll and document income verification as separate products, so having \"Plaid\" does not say which path a lender uses.",
+      "source": {
+        "label": "Plaid docs: Income",
+        "url": "https://plaid.com/docs/income/",
+        "read": "2026-10-29",
+        "status": "verified"
+      }
+    },
+    {
+      "claim": "A vendor case study says GoodLeap automated income calculations and document sorting with underwriters keeping oversight. Undated and self-reported by the vendor.",
+      "source": {
+        "label": "Ocrolus customer story: GoodLeap (undated, vendor claim)",
+        "url": "https://ocrolus.com/customer-stories/goodleap-strengthens-income-accuracy-with-ocrolus-ai/",
+        "read": "2026-10-29",
+        "status": "partly_verified"
+      }
+    },
+    {
+      "claim": "Assumption: a payment calculator may already have existed in GoodLeap's 2023 partner materials. Earlier research cited a February 2023 partner guide; no public copy was found on 2026-10-29.",
+      "source": {
+        "label": "Assumption: not confirmed by any source we could read",
+        "read": "2026-10-29",
+        "status": "assumption"
+      }
+    }
+  ],
+  "demoChanges": [
+    {
+      "friction": "Homeowners abandon at loan product selection; contractors can't explain the options quickly on site.",
+      "screen": "SCR-1",
+      "how": "Three catalog products side by side for the homeowner's priority, with monthly payment, total paid, total interest, APR, term and promo conditions computed in code, and the disclosure inline."
+    },
+    {
+      "friction": "Homeowners are often confused by promotional terms at product selection.",
+      "screen": "SCR-2",
+      "how": "Ask about this option: a short answer grounded in the product's terms, with its numbers checked against the computed values and the disclosures attached; eligibility questions are redirected to the credit engine."
+    },
+    {
+      "friction": "Homeowners abandon at income verification; a failed bank link is a dead end.",
+      "screen": "SCR-4",
+      "how": "Synthetic Plaid Link on the homeowner's own step; when the link fails, a plain-words explanation and a pay-stub path keep the application moving."
+    },
+    {
+      "friction": "Applications take 22 minutes on average against an industry benchmark under 10.",
+      "screen": "SCR-3",
+      "how": "An application-prep agent gathers the contractor profile, the chosen scenario and the estimate's fields, prefills what it can and lists only what is missing. The demo does not claim a specific time saving."
+    },
+    {
+      "friction": "Staff extract details from uploaded documents (pay stubs, contractor estimates, scope letters) by hand.",
+      "screen": "SCR-3, SCR-5",
+      "how": "The agent reads the contractor estimate and extracts its fields; a value it cannot read is marked as needing input instead of guessed. On review, every field shows where it came from (estimate, profile, Plaid, pay stub, homeowner) with an edit control."
+    },
+    {
+      "friction": "Compliance needs to see exactly what the system said and why, and no AI may make or imply a credit decision.",
+      "screen": "SCR-6",
+      "how": "Every borrower-facing message is recorded with its inputs, the computed numbers, each guardrail result and the raw and final text; the mocked credit engine alone returns the decision on SCR-5."
+    }
+  ],
+  "horizons": [
+    {
+      "name": "Next 2 weeks",
+      "items": [
+        {
+          "title": "Embed the journey in the contractor portal",
+          "friction": "Drop-off at product selection and income verification (38% of applications abandoned).",
+          "metric": "Application completion rate (completed ÷ started, weekly, by contractor segment and product); baseline 62% from the brief's 38% abandonment.",
+          "whyItWaited": "The portal, its sign-in and its contractor accounts are the lender's; the demo runs standalone with mocked services."
+        },
+        {
+          "title": "Pilot with 25–50 contractors",
+          "friction": "The demo cannot show whether the journey changes completion or time for real homeowners.",
+          "metric": "Completion rate against the 62% baseline, time to complete against the 22-minute average (benchmark under 10), and decline rate reported beside completion.",
+          "whyItWaited": "A lift can only be measured with real applications and a comparison group of contractors not in the pilot."
+        }
+      ]
+    },
+    {
+      "name": "Next quarter",
+      "items": [
+        {
+          "title": "Real Plaid with funnel analytics",
+          "friction": "Income verification drop-off: it is unknown how many homeowners leave before, during or after Plaid.",
+          "metric": "Drop-off before, during and after the Plaid step, and recovery rate after a failed link (failed → document path → verified).",
+          "whyItWaited": "The brief says to mock financial services, and the split needs the Snowflake funnel data the demo cannot see."
+        },
+        {
+          "title": "Contractor-estimate and scope-letter extraction for the review queue",
+          "friction": "Staff extract document details by hand.",
+          "metric": "Staff review time per application (no baseline in the brief yet) and share of extracted fields kept unchanged by the reviewer.",
+          "whyItWaited": "Accuracy has to be measured on real documents with reviewer labels; the demo uses three synthetic estimates."
+        },
+        {
+          "title": "Homeowner share link",
+          "friction": "Sensitive steps happen on the contractor's device, or the homeowner restarts later and re-enters details.",
+          "metric": "Completion rate for link-started applications compared with on-site ones, and time from link sent to submission.",
+          "whyItWaited": "It needs homeowner authentication and a public-facing app, which the demo leaves out on purpose."
+        },
+        {
+          "title": "Product ranking from Snowflake funnel data",
+          "friction": "Product selection drop-off: the demo ranks only by the homeowner's stated priority.",
+          "metric": "Drop-off at product selection and completion rate by product shown first.",
+          "whyItWaited": "It needs historical funnel data, and a ranking must be checked so it never implies who would qualify."
+        }
+      ]
+    },
+    {
+      "name": "Later",
+      "items": [
+        {
+          "title": "Voice on site",
+          "friction": "The contractor needs a payment answer in seconds while standing in the homeowner's kitchen.",
+          "metric": "Time to first payment answer and weekly active contractors (contractor adoption).",
+          "whyItWaited": "Speech adds latency and a second surface where disclosures must be delivered and audited."
+        },
+        {
+          "title": "Spanish",
+          "friction": "Assumption: homeowners who prefer Spanish face the same promo terms with less help.",
+          "metric": "Completion rate by language segment.",
+          "whyItWaited": "Disclosures need compliance-approved translations before any model output in Spanish is shown."
+        },
+        {
+          "title": "Compliance sampling",
+          "friction": "Compliance must see what the system said and why, at production volume.",
+          "metric": "Compliance failures shown to borrowers (our bar: zero) and share of sampled records reviewed each week.",
+          "whyItWaited": "Sampling needs production volume and Compliance's own review workflow; the demo shows every record."
+        },
+        {
+          "title": "Drift monitoring feeding the v1 → v2 loop",
+          "friction": "AI answer quality can change as prompts, models or the catalog change.",
+          "metric": "Guardrail blocks per 100 messages by check, share of answers replaced by the safe template, and answer latency p95.",
+          "whyItWaited": "It needs production traffic; the demo's audit log is the record it would read."
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "The company is GoodLeap; the brief names it only in its file name.",
+    "The homeowner completes verification and submission on their own device or step.",
+    "Catalog products, APRs and promo mechanics are invented and labelled.",
+    "Plaid Link, Document Income, the credit engine and the contractor profile service are mocked with canned responses.",
+    "The 22-minute figure's split by step is unknown, so the demo does not claim a specific time reduction.",
+    "GoodLeap's history on this page is included only where a public source confirmed it on 2026-10-29; the rest is labelled."
+  ],
+  "notBuilt": [
+    {
+      "item": "A homeowner-facing public app, authentication and multi-tenant portal plumbing",
+      "why": "Not the friction the brief names."
+    },
+    {
+      "item": "Real Plaid, real document management and a real credit engine",
+      "why": "The brief says to mock financial services."
+    },
+    {
+      "item": "Pay-stub and W-2 extraction as a product feature",
+      "why": "Plaid Document Income may already cover it; the demo mocks the result."
+    },
+    {
+      "item": "Fine-tuning, embeddings or retrieval over a document corpus",
+      "why": "The product terms fit in the prompt; a retrieval layer would be the science project the CTO warned against."
+    },
+    {
+      "item": "Voice, Spanish and monitoring dashboards",
+      "why": "Roadmap items; see Later."
+    }
+  ]
+}

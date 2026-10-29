@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "description": "Index of the three synthetic contractor estimates the Start application screen offers.",
+  "estimates": [
+    { "id": "roof_clean", "name": "Roof replacement (clean estimate)", "contractorId": "C-1001", "file": "roof_clean.txt" },
+    { "id": "roof_messy", "name": "Roof replacement (handwritten-style estimate)", "contractorId": "C-1001", "file": "roof_messy.txt" },
+    { "id": "hvac_missing_total", "name": "Heat pump replacement (no total yet)", "contractorId": "C-1002", "file": "hvac_missing_total.txt" }
+  ]
+}
